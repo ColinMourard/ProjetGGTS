@@ -1,7 +1,7 @@
 package projetggts
 
 class ReponseDetaille {
-	ArrayList<HashMap<String, String>> reponses;
+	ArrayList<Reponse> reponses;
 	static belongsTo = [questionnaireDetaille: QuestionnaireDetaille];
 
     static constraints = {
