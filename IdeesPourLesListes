@@ -19,4 +19,18 @@ Du coup mon idée est de:
   -faire une méthode dans la classe du domaine correspondante qui retourne une liste de String (soit que l'on rentre dans le code directement   
   soit que l'on lit dans un fichier du projet où l'on stocke toutes les possibiltés de questions
   On ferait de même pour les réponses
-  
+  => J'ai essayé d'implémenter cette méthode dans mon projet airport, voilà ce que j'ai ajouté à la classe airport:
+  def liste = liste()
+  public liste(){
+		def myList = []
+		myList.add([param1: "message1"])
+		myList.add([param1: "message2"])
+		return [myList : myList]
+	}
+ainsi que les balises dans le show.gsp (j'ai généré les views afin d'avoir accès aux fichiers.gsp).
+Au niveau de la compilation il n'y a aucuns problèmes. Cependant quand je charge la page http://localhost:8080/airports/airport/show 
+grails m'envoie un vieux message d'erreur MissingPropertyException.
+Y a des gens sur des forums qui conseillent de cleaner grails (avec la commande clean) mais rien n'y fait.
+ça me saoule
+Bien à vous
+MC
