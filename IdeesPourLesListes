@@ -1,0 +1,22 @@
+LISTE:
+Coucou!
+J'ai trouvé quelque chose sur les listes
+http://www.developpez.net/forums/d1313594/java/developpement-web-java/frameworks/autres/grails/grails-affichage-list/
+En gros la personne qui a crée la discussion arrivait pas à afficher ses paramètres sous forme de liste (les uns après les autres)
+Du coup y a un mec qui lui a donné une solution:
+//Dans la classe du domaine
+def myList= []
+myList.add([param1 : "titi"])
+myList.add([param1 : "toto"])
+return [myList:myList , ...]=>A mon avis pas nécessaire si on ne met pas tout ça dans une méthode
+
+//Dans le show.gsp correspondant:
+<g:each in="${myList }" status="i" var="element">
+       <td>${element.param1}</td>
+</g:each>
+
+Du coup mon idée est de:
+  -faire une méthode dans la classe du domaine correspondante qui retourne une liste de String (soit que l'on rentre dans le code directement   
+  soit que l'on lit dans un fichier du projet où l'on stocke toutes les possibiltés de questions
+  On ferait de même pour les réponses
+  
