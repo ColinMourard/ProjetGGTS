@@ -1,5 +1,7 @@
 package projetggts
 
+import javax.validation.Validator;
+
 class Question {
 	String type;
 	String question;
@@ -10,6 +12,6 @@ class Question {
 		type blank:  false;
 		question blank: false;
 		next nullable: true;
-		reponses nulllable: true;
+		reponses nullable: true;
     }
 }
