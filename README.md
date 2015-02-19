@@ -24,4 +24,6 @@ Re ! En ce qui concerne les problèmes soulevés, j'ai créé un issue pour chac
 
 Et si jamais vous avez des fichiers qui s'affichent avec des symboles bizarres dans GGTS, faites clic droit sur le fichier > Properties, puis dans le cadre Text file encoding de la page Ressource, choisissez Other: UTF-8
 
+Edit : Au niveau des issues, bien sûr, tout le monde n'est pas concerné par tous les sujets ! Chacun son job, et les hippopotames seront bien gardés ;-)
+
 Signé : Le Chartrousin
