@@ -19,3 +19,9 @@ Est ce qu'on créait un fichier des problèmes que l'on doit régler et des avan
 Je me penche sur le problème des list aujourd'hui!
 We'll be in touch guys! 
 Signé: Le Haut Savoyard
+
+Re ! En ce qui concerne les problèmes soulevés, j'ai créé un issue pour chacun d'eux. Après tout c'est à ça que ça sert !
+
+Et si jamais vous avez des fichiers qui s'affichent avec des symboles bizarres dans GGTS, faites clic droit sur le fichier > Properties, puis dans le cadre Text file encoding de la page Ressource, choisissez Other: UTF-8
+
+Signé : Le Chartrousin
