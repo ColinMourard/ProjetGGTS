@@ -12,7 +12,9 @@ class Question {
     static constraints = {
 		type blank:  false;
 		question blank: false;
-		next nullable: true;
+		next validator: {val, obj ->
+			return val != obj;
+		}
 		reponses nullable: true;
     }
 }

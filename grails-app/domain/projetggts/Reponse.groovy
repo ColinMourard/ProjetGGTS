@@ -8,7 +8,9 @@ class Reponse {
 	static belongsTo = [question: Question];
 
     static constraints = {
-		type blank: false;
+		type validator: {val, obj ->
+			return val == obj.question.getType();
+		}
 		reponse validator: {val, obj ->
 			if (obj.type == QuestionType.TexteObligatoire) {
 				return val != null || !val.equals("");
