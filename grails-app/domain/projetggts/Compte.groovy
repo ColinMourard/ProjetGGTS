@@ -14,9 +14,9 @@ class Compte {
 		eleve nullable: true;
 		professeur nullable: true;
 		identifiant(blank: false, unique: true);
-		mdp blank: false;
+		mdp minSize: 6;
 		nom blank: false;
 		prenom blank: false;
-		mail blank: false;
+		mail email: true;
     }
 }
