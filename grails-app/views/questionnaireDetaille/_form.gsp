@@ -8,7 +8,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:link controller="question" action="create" params="['questionnaireDetaille.id': QuestionnaireDetailleInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'question.label', default: 'Question')])}</g:link>
-	<!--<g:select id="firstQuestion" name="firstQuestion.id" from="${projetggts.Question.list()}" optionKey="id" required="" value="${questionnaireDetailleInstance?.firstQuestion?.id}" class="many-to-one"/>-->
 
 </div>
 
