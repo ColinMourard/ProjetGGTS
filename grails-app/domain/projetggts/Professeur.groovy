@@ -7,5 +7,7 @@ class Professeur {
 	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours];
 
     static constraints = {
+		questionnaires nullable: true;
+		cours nullable: true;
     }
 }
