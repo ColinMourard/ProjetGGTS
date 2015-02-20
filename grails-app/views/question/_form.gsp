@@ -7,7 +7,7 @@
 		<g:message code="question.type.label" default="Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="type" required="" value="${questionInstance?.type}"/>
+	<g:select name="type" from="${utilitaires.QuestionType?.values()}" keys="${utilitaires.QuestionType.values()*.name()}" required="" value="${questionInstance?.type?.name()}" />
 
 </div>
 

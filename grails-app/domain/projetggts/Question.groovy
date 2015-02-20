@@ -1,9 +1,10 @@
 package projetggts
 
 import javax.validation.Validator;
+import utilitaires.QuestionType
 
 class Question {
-	String type;
+	QuestionType type;
 	String question;
 	Question next;
 	static hasMany = [reponses: Reponse];
