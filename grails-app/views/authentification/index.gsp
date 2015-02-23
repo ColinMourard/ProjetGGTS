@@ -4,7 +4,7 @@
     <title>Index</title>         
   </head>
   <body>
-  	<g:link controller="compte" action="login">Se connecter</g:link>
+  	<g:link controller="authentification" action="login">Se connecter</g:link>
   </body>
 </html>
  
