@@ -11,15 +11,7 @@ class CompteController {
 	  if(compte){
 		session.compte = compte
 		flash.message = "Bonjour ${compte.nom}!"
-		if(compte.admin){
-			redirect(controller:"compte.admin", action:"index")
-		}
-		if(compte.eleve){
-			redirect(controller:"compte.eleve", action:"index")
-		}
-		if(compte.professeur){
-			redirect(controller:"compte.professeur", action:"index")
-		}
+		redirect(controller:"compte",action:"index")//=> Par défaut! Il faut prendre en compte le fait que la personne qui se connecte est soit un prof soit un élève soit un administrateur (modifier les classes du domaines selon le nouveau diagramme de classe UML
 	  }else{
 		flash.message = "${params.identifiant} ou mot de passe invalide!."
 		redirect(action:"login")
