@@ -1,22 +1,34 @@
 package projetggts
 
+import utilitaires.Matiere;
+import utilitaires.TypeCompte;
+
 class Compte {
 	String identifiant;
 	String mdp;
 	String nom;
 	String prenom;
 	String mail;
+	TypeCompte type;
 	boolean estConnecte;
-	static belongsTo = [admin: Administrateur, eleve: Eleve, professeur: Professeur];
+	
+	int annee;
+	int groupe;
+	
+	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours];
 
+	
     static constraints = {
-		admin nullable: true;
-		eleve nullable: true;
-		professeur nullable: true;
 		identifiant(blank: false, unique: true);
 		mdp minSize: 6;
 		nom blank: false;
 		prenom blank: false;
 		mail email: true;
+		
+		annee(maxSize:1,validator: {return it.matches("[0-9]+")});
+		groupe(maxSize:1,validator: {return it.matches("[0-9]+")});
+		
+		questionnaires nullable: true;
+		cours nullable: true;
     }
 }
