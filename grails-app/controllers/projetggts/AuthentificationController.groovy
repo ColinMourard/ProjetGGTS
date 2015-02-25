@@ -10,7 +10,7 @@ class AuthentificationController {
 	def login = {}
 	
 	def authentification = {
-	  def compte = Compte.findByIdentifiantAndMdp(params.login, params.password)
+	  def compte = Compte.findByIdentifiantAndMdp(params.ident, params.motdepasse)
 	  if(compte){
 		session.compte = compte
 		flash.message = "Bonjour ${compte.nom}!"
@@ -24,7 +24,7 @@ class AuthentificationController {
 			redirect(controller:"compte",action:"index")
 		}
 	  }else{
-		flash.message = "${params.login} ou mot de passe invalide!."
+		flash.message = "${params.ident} ou mot de passe invalide!."
 		redirect(action:"login")
 	  }
 	}

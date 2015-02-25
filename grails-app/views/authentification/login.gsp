@@ -5,7 +5,6 @@
   </head>
   <body>
     <div class="body">
-      <h1>Login</h1>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
@@ -15,19 +14,19 @@
             <tbody>            
               <tr class="prop">
                 <td class="name">
-                  <label for="login">Login:</label>
+                  <label for="ident">Identifiant:</label>
                 </td>
                 <td>
-                  <input type="text" id="login" name="login"/>
+                  <input type="text" id="ident" name="ident"/>
                 </td>
               </tr> 
           
               <tr class="prop">
                 <td class="name">
-                  <label for="password">Password:</label>
+                  <label for="motdepasse">Mot de Passe:</label>
                 </td>
                 <td>
-                  <input type="password" id="password" name="password"/>
+                  <input type="password" id="motdepasse" name="motdepasse"/>
                 </td>
               </tr> 
             </tbody>
@@ -35,7 +34,7 @@
         </div>
         <div class="buttons">
           <span class="button">
-            <input class="save" type="submit" value="Login" />
+            <input class="save" type="submit" value="Ident" />
           </span>
         </div>
       </g:form>
