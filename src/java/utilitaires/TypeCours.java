@@ -1,5 +1,5 @@
 package utilitaires;
 
 public enum TypeCours {
-	Amphi, PC, TD, BE, TP, General
+	General, Amphi, BE, PC, TD, TP
 }
