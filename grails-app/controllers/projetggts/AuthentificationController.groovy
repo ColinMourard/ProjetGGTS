@@ -1,5 +1,7 @@
 package projetggts
 
+import utilitaires.TypeCompte
+
 class AuthentificationController {
 
     
@@ -12,7 +14,15 @@ class AuthentificationController {
 	  if(compte){
 		session.compte = compte
 		flash.message = "Bonjour ${compte.nom}!"
-		redirect(controller:"compte",action:"index")//=> Par défaut! Il faut prendre en compte le fait que la personne qui se connecte est soit un prof soit un élève soit un administrateur (modifier les classes du domaines selon le nouveau diagramme de classe UML
+		if(compte.type.equals(TypeCompte.Eleve)){
+			redirect(controller:"reponse",action:"index")	
+		}
+		else if(compte.type.equals(TypeCompte.Professeur)){
+			redirect(controller:"questionnaireCours",action:"index")
+		}
+		else{
+			redirect(controller:"compte",action:"index")
+		}
 	  }else{
 		flash.message = "${params.login} ou mot de passe invalide!."
 		redirect(action:"login")
@@ -22,6 +32,6 @@ class AuthentificationController {
 	def logout = {
 	  flash.message = "Aurevoir ${session.compte.nom}"
 	  session.compte = null
-	  redirect(controller:"compte", action:"authenticate")
+	  redirect(controller:"authentification", action:"authentification")
 	}
 }
