@@ -1,9 +1,11 @@
 package projetggts
 
 import utilitaires.Matiere;
+import utilitaires.TypeCours;
 
 class Cours {
 	String intitule;
+	TypeCours type;
 	Matiere matiere;
 	static hasMany = [eleves: Compte];
 	static hasOne = [professeur: Compte];
