@@ -35,5 +35,6 @@ class AuthentificationController {
 	def deconnexion ={
 		flash.message = "Au revoir ${session.compte.nom}"
 		session.compte = null
+		redirect(url: "/")
 	}
 }

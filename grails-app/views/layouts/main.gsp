@@ -19,7 +19,13 @@
 	<body>
 	
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
-		<g:link controller="authentification" action="logout">Se déconnecter</g:link>
+		<g:if test="${session.compte == null}">
+			<g:link controller="authentification" action="login">Se connecter</g:link>
+		</g:if>
+		<g:else>
+			<g:link controller="compte" action="show" id="${session.compte.id}">${session.compte.prenom} ${session.compte.nom}</g:link>
+			<g:link controller="authentification" action="logout">Se déconnecter</g:link>
+		</g:else>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
