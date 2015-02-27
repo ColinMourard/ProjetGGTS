@@ -39,7 +39,7 @@ class Compte {
 		}
 		// Parametres reserve au professeur
 		questionnaires nullable: true, validator: {val, obj ->
-			if (obj.type == TypeCompte.Eleve || obj.type == TypeCompte.Administrateur) {
+			if (obj.type == TypeCompte.Administrateur) {
 				return val == null;
 			}
 			return true;

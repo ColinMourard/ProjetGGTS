@@ -7,8 +7,8 @@ class Cours {
 	String intitule;
 	TypeCours type;
 	Matiere matiere;
-	static hasMany = [eleves: Compte];
-	static belongsTo = Compte;
+	static hasMany = [eleves: String];
+	static belongsTo = [professeur: Compte];
 
     static constraints = {
 		intitule blank: false;
