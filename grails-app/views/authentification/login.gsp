@@ -34,7 +34,7 @@
         </div>
         <div class="buttons">
           <span class="button">
-            <input class="save" type="submit" value="Ident" />
+            <input class="save" type="submit" value="Se Connecter" />
           </span>
         </div>
       </g:form>

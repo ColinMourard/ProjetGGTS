@@ -30,8 +30,10 @@ class AuthentificationController {
 	}
 	
 	def logout = {
-	  flash.message = "Aurevoir ${session.compte.nom}"
-	  session.compte = null
-	  redirect(controller:"authentification", action:"authentification")
+	  redirect(controller:"authentification", action:"deconnexion")
+	}
+	def deconnexion ={
+		flash.message = "Aurevoir ${session.compte.nom}"
+		session.compte = null
 	}
 }
