@@ -33,7 +33,7 @@ class AuthentificationController {
 	  redirect(controller:"authentification", action:"deconnexion")
 	}
 	def deconnexion ={
-		flash.message = "Aurevoir ${session.compte.nom}"
+		flash.message = "Au revoir ${session.compte.nom}"
 		session.compte = null
 	}
 }
