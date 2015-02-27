@@ -8,12 +8,12 @@ class Cours {
 	TypeCours type;
 	Matiere matiere;
 	static hasMany = [eleves: Compte];
-	static hasOne = [professeur: Compte];
 	static belongsTo = Compte;
 
     static constraints = {
-		matiere blank: false;
 		intitule blank: false;
+		matiere blank: false;
+		type();
 		eleves nullable: true;
     }
 }

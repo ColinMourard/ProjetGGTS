@@ -34,8 +34,7 @@
 		<g:message code="questionnaireCours.professeur.label" default="Professeur" />
 		<span class="required-indicator">*</span>
 	</label>
-	<!--g:select id="professeur" name="professeur.id" from="${projetggts.Compte.list()}" optionKey="id" required="" value="${questionnaireCoursInstance?.professeur?.id}" class="many-to-one"/-->
-	<g:select id="professeur" name="professeur.id" from="${[session.compte]}" optionKey="id" required="" value="${questionnaireCoursInstance?.professeur?.id}" class="many-to-one"/>
+	<g:select id="professeur" name="professeur.id" from="${projetggts.Compte.list()}" optionKey="id" required="" value="${questionnaireCoursInstance?.professeur?.id}" class="many-to-one"/>
 
 </div>
 
