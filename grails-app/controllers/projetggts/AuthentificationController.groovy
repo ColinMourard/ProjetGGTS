@@ -21,7 +21,7 @@ class AuthentificationController {
 			redirect(controller:"questionnaireCours",action:"index")
 		}
 		else{
-			redirect(controller:"compte",action:"index")
+			redirect(url: "/compte/show/${session.compte.getId()}")
 		}
 	  }else{
 		flash.message = "${params.ident} ou mot de passe invalide!."

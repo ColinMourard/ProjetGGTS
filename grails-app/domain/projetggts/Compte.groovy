@@ -27,13 +27,13 @@ class Compte {
 		// Parametres reserve a l'eleve
 		annee maxSize:1,validator: {val, obj ->
 			if (obj.type == TypeCompte.Eleve) {
-				return val.matches("[0-9]+");
+				return val.matches('[0-9]');
 			}
 			return val == 0;
 		}
 		groupe maxSize:1,validator: {val, obj ->
 			if (obj.type == TypeCompte.Eleve) {
-				return it.matches("[0-9]+");
+				return it.matches('[0-9]');
 			}
 			return val == 0;
 		}
