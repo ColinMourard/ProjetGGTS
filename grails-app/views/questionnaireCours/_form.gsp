@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: questionnaireCoursInstance, field: 'simple', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: questionnaireCoursInstance, field: 'simple', 'error')} ">
 	<label for="simple">
 		<g:message code="questionnaireCours.simple.label" default="Simple" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="simple" name="simple.id" from="${projetggts.QuestionnaireSimple.list()}" optionKey="id" required="" value="${questionnaireCoursInstance?.simple?.id}" class="many-to-one"/>
+	<g:select id="simple" name="simple.id" from="${projetggts.QuestionnaireSimple.list()}" optionKey="id" value="${questionnaireCoursInstance?.simple?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -34,7 +34,8 @@
 		<g:message code="questionnaireCours.professeur.label" default="Professeur" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="professeur" name="professeur.id" from="${projetggts.Compte.list()}" optionKey="id" required="" value="${questionnaireCoursInstance?.professeur?.id}" class="many-to-one"/>
+	<g:message code="session.compte.label" default="M./Me./Mlle ${session.compte.nom}"/>
+	<g:field type="hidden" id="professeur" name="professeur.id" value="${session.compte.id}"/>
 
 </div>
 

@@ -13,6 +13,7 @@ class BootStrap {
 				professeur1.matieres = new HashSet<Matiere>();
 				professeur1.matieres.add(Matiere.Mathematiques);
 				professeur1.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Statistiques"));
+				professeur1.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Probabilites"));
 				professeur1.save();
 				if(professeur1.hasErrors()){
 					println professeur1.getErrors();
@@ -20,7 +21,7 @@ class BootStrap {
 				def professeur2 = new Compte(identifiant: "prof2", mdp: "password", nom: "Professeur", prenom: "Professeur", mail: "prof@isae.fr", type: TypeCompte.Professeur, annee: 0, groupe: 0);
 				professeur2.matieres = new HashSet<Matiere>();
 				professeur2.matieres.add(Matiere.Mathematiques);
-				professeur2.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Probabilites"));
+				professeur2.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Distributions"));
 				professeur2.save();
 				if(professeur2.hasErrors()){
 					println professeur2.getErrors();

@@ -5,7 +5,7 @@ class QuestionnaireCours {
 	static hasOne = [simple: QuestionnaireSimple, detaille: QuestionnaireDetaille];
 
     static constraints = {
-		simple unique: true;
+		simple nullable: true, unique: true; // nullable que pour les tests
 		detaille nullable: true, unique: true;
     }
 }
