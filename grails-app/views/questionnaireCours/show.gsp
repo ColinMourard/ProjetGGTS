@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="cours-label" class="property-label"><g:message code="questionnaireCours.cours.label" default="Cours" /></span>
 					
-						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${questionnaireCoursInstance?.cours?.id}">${questionnaireCoursInstance?.cours?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${questionnaireCoursInstance?.cours?.id}">${questionnaireCoursInstance?.cours?.intitule}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="delai-label" class="property-label"><g:message code="questionnaireCours.delai.label" default="Delai" /></span>
 					
-						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireCoursInstance?.delai}" /></span>
+						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireCoursInstance?.delai}" type="date"/></span>
 					
 				</li>
 				</g:if>
@@ -74,7 +74,7 @@
 				<li class="fieldcontain">
 					<span id="professeur-label" class="property-label"><g:message code="questionnaireCours.professeur.label" default="Professeur" /></span>
 					
-						<span class="property-value" aria-labelledby="professeur-label"><g:link controller="compte" action="show" id="${questionnaireCoursInstance?.professeur?.id}">${questionnaireCoursInstance?.professeur?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="professeur-label"><g:link controller="compte" action="show" id="${questionnaireCoursInstance?.professeur?.id}">${questionnaireCoursInstance?.professeur?.prenom} ${questionnaireCoursInstance?.professeur?.nom}</g:link></span>
 					
 				</li>
 				</g:if>

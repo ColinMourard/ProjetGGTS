@@ -34,7 +34,7 @@
 		<g:message code="questionnaireCours.cours.label" default="Cours" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="cours" name="cours.id" from="${projetggts.Compte.get(userId).cours}" optionKey="id" required="" value="${questionnaireCoursInstance?.cours?.id}" class="many-to-one"/>
+	<g:select id="cours" name="cours.id" from="${projetggts.Compte.get(userId).cours}" optionValue="intitule" optionKey="id" required="" value="${questionnaireCoursInstance?.cours?.id}" class="many-to-one"/>
 
 </div>
 
@@ -43,7 +43,7 @@
 		<g:message code="questionnaireCours.question.label" default="Question" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="question" required="" value="Tapez ici la question pour le questionnaire simple"/>
+	<g:textArea name="question" required="" value="Tapez ici la question pour le questionnaire simple"/>
 
 </div>
 
