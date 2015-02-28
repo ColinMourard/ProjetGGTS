@@ -1,6 +1,6 @@
 package projetggts
 
 class CompteController {
-
-    def scaffold = true;
+	static scope = "session"
+	def scaffold = true
 }

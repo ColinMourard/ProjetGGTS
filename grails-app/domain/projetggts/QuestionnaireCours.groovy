@@ -2,8 +2,9 @@ package projetggts
 
 class QuestionnaireCours {
 	Calendar delai
+	static hasMany = [reponses: ReponseSimple];
 	static belongsTo = [professeur: Compte, cours: Cours];
-	static hasOne = [simple: QuestionnaireSimple, detaille: QuestionnaireDetaille];
+	static hasOne = [simple: QuestionnaireCours, detaille: QuestionnaireDetaille];
 
     static constraints = {
 		simple unique: true;
