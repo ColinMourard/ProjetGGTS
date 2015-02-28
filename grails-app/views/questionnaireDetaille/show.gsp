@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list questionnaireDetaille">
 			
+				<g:if test="${questionnaireDetailleInstance?.delai}">
+				<li class="fieldcontain">
+					<span id="delai-label" class="property-label"><g:message code="questionnaireDetaille.delai.label" default="Delai" /></span>
+					
+						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireDetailleInstance?.delai}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${questionnaireDetailleInstance?.firstQuestion}">
 				<li class="fieldcontain">
 					<span id="firstQuestion-label" class="property-label"><g:message code="questionnaireDetaille.firstQuestion.label" default="First Question" /></span>
 					
 						<span class="property-value" aria-labelledby="firstQuestion-label"><g:link controller="question" action="show" id="${questionnaireDetailleInstance?.firstQuestion?.id}">${questionnaireDetailleInstance?.firstQuestion?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionnaireDetailleInstance?.delai}">
-				<li class="fieldcontain">
-					<span id="delai-label" class="property-label"><g:message code="questionnaireDetaille.delai.label" default="Delai" /></span>
-					
-						<span class="property-value" aria-labelledby="delai-label"><g:fieldValue bean="${questionnaireDetailleInstance}" field="delai"/></span>
 					
 				</li>
 				</g:if>

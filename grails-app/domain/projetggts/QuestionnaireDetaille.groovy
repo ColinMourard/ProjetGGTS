@@ -2,7 +2,7 @@ package projetggts
 
 class QuestionnaireDetaille {
 	Question firstQuestion;
-	Calendar delai;
+	Date delai;
 	static belongsTo = [questionnaire: QuestionnaireCours];
 
     static constraints = {

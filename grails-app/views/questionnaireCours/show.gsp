@@ -23,6 +23,33 @@
 			</g:if>
 			<ol class="property-list questionnaireCours">
 			
+				<g:if test="${questionnaireCoursInstance?.cours}">
+				<li class="fieldcontain">
+					<span id="cours-label" class="property-label"><g:message code="questionnaireCours.cours.label" default="Cours" /></span>
+					
+						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${questionnaireCoursInstance?.cours?.id}">${questionnaireCoursInstance?.cours?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionnaireCoursInstance?.question}">
+				<li class="fieldcontain">
+					<span id="question-label" class="property-label"><g:message code="questionnaireCours.question.label" default="Question" /></span>
+					
+						<span class="property-value" aria-labelledby="question-label"><g:fieldValue bean="${questionnaireCoursInstance}" field="question"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionnaireCoursInstance?.delai}">
+				<li class="fieldcontain">
+					<span id="delai-label" class="property-label"><g:message code="questionnaireCours.delai.label" default="Delai" /></span>
+					
+						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireCoursInstance?.delai}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${questionnaireCoursInstance?.detaille}">
 				<li class="fieldcontain">
 					<span id="detaille-label" class="property-label"><g:message code="questionnaireCours.detaille.label" default="Detaille" /></span>
@@ -39,33 +66,6 @@
 						<g:each in="${questionnaireCoursInstance.reponses}" var="r">
 						<span class="property-value" aria-labelledby="reponses-label"><g:link controller="reponseSimple" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionnaireCoursInstance?.question}">
-				<li class="fieldcontain">
-					<span id="question-label" class="property-label"><g:message code="questionnaireCours.question.label" default="Question" /></span>
-					
-						<span class="property-value" aria-labelledby="question-label"><g:fieldValue bean="${questionnaireCoursInstance}" field="question"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionnaireCoursInstance?.cours}">
-				<li class="fieldcontain">
-					<span id="cours-label" class="property-label"><g:message code="questionnaireCours.cours.label" default="Cours" /></span>
-					
-						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${questionnaireCoursInstance?.cours?.id}">${questionnaireCoursInstance?.cours?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionnaireCoursInstance?.delai}">
-				<li class="fieldcontain">
-					<span id="delai-label" class="property-label"><g:message code="questionnaireCours.delai.label" default="Delai" /></span>
-					
-						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireCoursInstance?.delai}" /></span>
 					
 				</li>
 				</g:if>
