@@ -21,8 +21,8 @@ class Compte {
     static constraints = {
 		identifiant(blank: false, unique: true);
 		mdp minSize: 6, password: true;
-		nom blank: false;
 		prenom blank: false;
+		nom blank: false;
 		mail email: true;
 		// Parametres reserve a l'eleve
 		annee maxSize:1,validator: {val, obj ->

@@ -63,6 +63,11 @@ class BootStrap {
 				if(professeur2.hasErrors()){
 					println professeur2.getErrors();
 				}
+				def administrateur = new Compte(identifiant: "admin", mdp: "password", nom: "Istrateur", prenom: "Admin", mail: "admin.istrateur@isae.fr", type : TypeCompte.Administrateur, annee: 0, groupe: 0);
+				administrateur.save();
+				if(administrateur.hasErrors()){
+					println administrateur.getErrors();
+				}
 			}
 		}
     }
