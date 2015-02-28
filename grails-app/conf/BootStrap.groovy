@@ -1,4 +1,3 @@
-
 import projetggts.Question
 import utilitaires.QuestionType;
 import projetggts.Compte
@@ -10,7 +9,6 @@ import utilitaires.TypeCours;
 class BootStrap {
 
     def init = { servletContext ->
-
 		environments{
 			development{
 				// Premiere serie de question

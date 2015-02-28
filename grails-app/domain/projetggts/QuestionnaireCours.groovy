@@ -1,7 +1,8 @@
 package projetggts
 
 class QuestionnaireCours {
-	Calendar delai
+	String question;
+	Calendar delai;
 	static hasMany = [reponses: ReponseSimple];
 	static belongsTo = [professeur: Compte, cours: Cours];
 	static hasOne = [detaille: QuestionnaireDetaille];
