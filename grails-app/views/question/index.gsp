@@ -30,6 +30,8 @@
 					
 						<th><g:message code="question.next.label" default="Next" /></th>
 					
+						<th><g:message code="question.precedent.label" default="Precedent" /></th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 						<td>${fieldValue(bean: questionInstance, field: "question")}</td>
 					
 						<td>${fieldValue(bean: questionInstance, field: "next")}</td>
+					
+						<td>${fieldValue(bean: questionInstance, field: "precedent")}</td>
 					
 					</tr>
 				</g:each>

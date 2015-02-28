@@ -61,6 +61,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${questionInstance?.precedent}">
+				<li class="fieldcontain">
+					<span id="precedent-label" class="property-label"><g:message code="question.precedent.label" default="Precedent" /></span>
+					
+						<span class="property-value" aria-labelledby="precedent-label"><g:link controller="question" action="show" id="${questionInstance?.precedent?.id}">${questionInstance?.precedent?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:questionInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
