@@ -8,8 +8,10 @@ class QuestionnaireCours {
 	static hasOne = [detaille: QuestionnaireDetaille];
 
     static constraints = {
+		cours;
+		question blank: false;
+		delai;
 		detaille nullable: true, unique: true;
 		reponses nullable: true;
-		question blank: false;
     }
 }
