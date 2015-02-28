@@ -9,7 +9,7 @@ import grails.transaction.Transactional
 class QuestionnaireDetailleController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond QuestionnaireDetaille.list(params), model:[questionnaireDetailleInstanceCount: QuestionnaireDetaille.count()]
@@ -34,7 +34,7 @@ class QuestionnaireDetailleController {
             respond questionnaireDetailleInstance.errors, view:'create'
             return
         }
-
+		
         questionnaireDetailleInstance.save flush:true
 
         request.withFormat {
