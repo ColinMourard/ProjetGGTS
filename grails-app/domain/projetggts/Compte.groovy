@@ -20,7 +20,7 @@ class Compte {
 	
     static constraints = {
 		identifiant(blank: false, unique: true);
-		mdp minSize: 6;
+		mdp minSize: 6, password: true;
 		nom blank: false;
 		prenom blank: false;
 		mail email: true;
