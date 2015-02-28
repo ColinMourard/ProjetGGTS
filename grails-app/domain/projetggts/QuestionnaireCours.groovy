@@ -1,11 +1,15 @@
 package projetggts
 
 class QuestionnaireCours {
+	String question;
+	Calendar delai;
+	static hasMany = [reponses: ReponseSimple];
 	static belongsTo = [professeur: Compte, cours: Cours];
-	static hasOne = [simple: QuestionnaireSimple, detaille: QuestionnaireDetaille];
+	static hasOne = [detaille: QuestionnaireDetaille];
 
     static constraints = {
-		simple nullable: true, unique: true; // nullable que pour les tests
 		detaille nullable: true, unique: true;
+		reponses nullable: true;
+		question blank: false;
     }
 }
