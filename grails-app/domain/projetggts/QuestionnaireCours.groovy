@@ -4,7 +4,7 @@ class QuestionnaireCours {
 	Calendar delai
 	static hasMany = [reponses: ReponseSimple];
 	static belongsTo = [professeur: Compte, cours: Cours];
-	static hasOne = [simple: QuestionnaireCours, detaille: QuestionnaireDetaille];
+	static hasOne = [detaille: QuestionnaireDetaille];
 
     static constraints = {
 		simple unique: true;
