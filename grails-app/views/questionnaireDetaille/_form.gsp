@@ -16,7 +16,7 @@
 		<g:message code="questionnaireDetaille.firstQuestion.label" default="First Question" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="firstQuestion" name="firstQuestion.id" from="${projetggts.Question.list()}" optionKey="id" required="" value="${questionnaireDetailleInstance?.firstQuestion?.id}" class="many-to-one"/>
+	<g:select id="firstQuestion" name="firstQuestion.id" from="${projetggts.Question.findAllByPrecedentIsNull()}" optionKey="id" required="" value="${questionnaireDetailleInstance?.firstQuestion?.id}" class="many-to-one"/>
 
 </div>
 

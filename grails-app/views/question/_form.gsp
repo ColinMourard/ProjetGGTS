@@ -20,12 +20,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'next', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'next', 'error')} required">
 	<label for="next">
 		<g:message code="question.next.label" default="Next" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="next" name="next.id" from="${projetggts.Question.list()}" optionKey="id" value="${questionInstance?.next?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="next" name="next.id" from="${projetggts.Question.list()}" optionKey="id" required="" value="${questionInstance?.next?.id}" class="many-to-one"/>
 
 </div>
 
@@ -44,6 +44,15 @@
 </li>
 </ul>
 
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'precedent', 'error')} ">
+	<label for="precedent">
+		<g:message code="question.precedent.label" default="Precedent" />
+		
+	</label>
+	<g:select id="precedent" name="precedent.id" from="${projetggts.Question.list()}" optionKey="id" value="${questionInstance?.precedent?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

@@ -8,7 +8,7 @@ class Question {
 	String question;
 	Question next;
 	static hasMany = [reponses: Reponse];
-
+	static belongsTo = [precedent: Question];
     static constraints = {
 		type blank:  false;
 		question blank: false;
@@ -16,5 +16,6 @@ class Question {
 			return val != obj;
 		}
 		reponses nullable: true;
+		precedent nullable: true;
     }
 }
