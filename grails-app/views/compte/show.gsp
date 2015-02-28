@@ -95,7 +95,7 @@
 					<span id="questionnaires-label" class="property-label"><g:message code="compte.questionnaires.label" default="Questionnaires" /></span>
 					
 						<g:each in="${compteInstance.questionnaires}" var="q">
-						<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -106,7 +106,7 @@
 					<span id="cours-label" class="property-label"><g:message code="compte.cours.label" default="Cours" /></span>
 					
 						<g:each in="${compteInstance.cours}" var="c">
-						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="cours-label"><g:link controller="cours" action="show" id="${c.id}">${c?.intitule}</g:link></span>
 						</g:each>
 					
 				</li>

@@ -50,14 +50,26 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${questionnaireCoursInstance?.detaille}">
+				<g:if test="${questionnaireCoursInstance?.professeur}">
 				<li class="fieldcontain">
-					<span id="detaille-label" class="property-label"><g:message code="questionnaireCours.detaille.label" default="Detaille" /></span>
+					<span id="professeur-label" class="property-label"><g:message code="questionnaireCours.professeur.label" default="Professeur" /></span>
 					
-						<span class="property-value" aria-labelledby="detaille-label"><g:link controller="questionnaireDetaille" action="show" id="${questionnaireCoursInstance?.detaille?.id}">${questionnaireCoursInstance?.detaille?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="professeur-label"><g:link controller="compte" action="show" id="${questionnaireCoursInstance?.professeur?.id}">${questionnaireCoursInstance?.professeur?.prenom} ${questionnaireCoursInstance?.professeur?.nom}</g:link></span>
 					
 				</li>
 				</g:if>
+			
+				<li class="fieldcontain">
+					<span id="detaille-label" class="property-label"><g:message code="questionnaireCours.detaille.label" default="Detaille" /></span>
+					
+						<g:if test="${questionnaireCoursInstance?.detaille}">
+							<span class="property-value" aria-labelledby="detaille-label"><g:link controller="questionnaireDetaille" action="show" id="${questionnaireCoursInstance?.detaille?.id}">Voir le questionnaire detaille</g:link></span>
+						</g:if>
+						<g:else>
+							<span class="property-value" aria-labelledby="detaille-label"><g:link controller="questionnaireDetaille" action="create" id="${questionnaireCoursInstance?.id}">Creer le questionnaire detaille</g:link></span>
+						</g:else>
+					
+				</li>
 			
 				<g:if test="${questionnaireCoursInstance?.reponses}">
 				<li class="fieldcontain">
@@ -66,15 +78,6 @@
 						<g:each in="${questionnaireCoursInstance.reponses}" var="r">
 						<span class="property-value" aria-labelledby="reponses-label"><g:link controller="reponseSimple" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionnaireCoursInstance?.professeur}">
-				<li class="fieldcontain">
-					<span id="professeur-label" class="property-label"><g:message code="questionnaireCours.professeur.label" default="Professeur" /></span>
-					
-						<span class="property-value" aria-labelledby="professeur-label"><g:link controller="compte" action="show" id="${questionnaireCoursInstance?.professeur?.id}">${questionnaireCoursInstance?.professeur?.prenom} ${questionnaireCoursInstance?.professeur?.nom}</g:link></span>
 					
 				</li>
 				</g:if>

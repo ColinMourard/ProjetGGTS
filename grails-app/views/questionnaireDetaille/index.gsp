@@ -24,9 +24,9 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="delai" title="${message(code: 'questionnaireDetaille.delai.label', default: 'Delai')}" />
-					
 						<th><g:message code="questionnaireDetaille.firstQuestion.label" default="First Question" /></th>
+					
+						<g:sortableColumn property="delai" title="${message(code: 'questionnaireDetaille.delai.label', default: 'Delai')}" />
 					
 						<th><g:message code="questionnaireDetaille.questionnaire.label" default="Questionnaire" /></th>
 					
@@ -36,9 +36,9 @@
 				<g:each in="${questionnaireDetailleInstanceList}" status="i" var="questionnaireDetailleInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${questionnaireDetailleInstance.id}">${fieldValue(bean: questionnaireDetailleInstance, field: "delai")}</g:link></td>
+						<td><g:link action="show" id="${questionnaireDetailleInstance.id}">${fieldValue(bean: questionnaireDetailleInstance, field: "firstQuestion")}</g:link></td>
 					
-						<td>${fieldValue(bean: questionnaireDetailleInstance, field: "firstQuestion")}</td>
+						<td><g:formatDate date="${questionnaireDetailleInstance.delai}" /></td>
 					
 						<td>${fieldValue(bean: questionnaireDetailleInstance, field: "questionnaire")}</td>
 					

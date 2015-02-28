@@ -20,7 +20,7 @@ class CompteController {
         respond compteInstance
     }
 
-    def create(String typeCompte) {
+    def create() {
         respond new Compte(params)
     }
 

@@ -49,7 +49,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: questionnaireCoursInstance, field: 'delai', 'error')} required">
 	<label for="delai">
-		<g:message code="questionnaireCours.delai.label" default="Date de fin" />
+		<g:message code="questionnaireCours.delai.label" default="Delai" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="delai" precision="day"  value="${questionnaireCoursInstance?.delai}"  />

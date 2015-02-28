@@ -6,5 +6,6 @@ class QuestionnaireDetaille {
 	static belongsTo = [questionnaire: QuestionnaireCours];
 
     static constraints = {
+		firstQuestion nullable: true;
     }
 }

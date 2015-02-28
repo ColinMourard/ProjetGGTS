@@ -24,7 +24,7 @@ class BootStrap {
 				if(secondQuestion.hasErrors()){
 					println secondQuestion.getErrors();
 				}
-				def firstQuestion = new Question(type: QuestionType.NoteSur5, question: "Quelle note donneriez-vous à ce cours ?", next: secondQuestion);
+				def firstQuestion = new Question(type: QuestionType.NoteSur5, question: "Quelle note donneriez-vous a ce cours ?", next: secondQuestion);
 				firstQuestion.save();
 				if(firstQuestion.hasErrors()){
 					println firstQuestion.getErrors();
