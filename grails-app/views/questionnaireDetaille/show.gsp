@@ -23,14 +23,12 @@
 			</g:if>
 			<ol class="property-list questionnaireDetaille">
 			
-				<g:if test="${questionnaireDetailleInstance?.firstQuestion}">
 				<li class="fieldcontain">
-					<span id="firstQuestion-label" class="property-label"><g:message code="questionnaireDetaille.firstQuestion.label" default="First Question" /></span>
+					<span id="firstQuestion-label" class="property-label"><g:message code="questionnaireDetaille.firstQuestion.label" default="Questions" /></span>
 					
-						<span class="property-value" aria-labelledby="firstQuestion-label"><g:link controller="question" action="show" id="${questionnaireDetailleInstance?.firstQuestion?.id}">${questionnaireDetailleInstance?.firstQuestion?.question}</g:link></span>
+						<span class="property-value" aria-labelledby="firstQuestion-label"><g:link controller="questionnaireDetaille" action="showQuestions" id="${questionnaireDetailleInstance?.id}">Voir la liste des questions</g:link></span>
 					
 				</li>
-				</g:if>
 			
 				<g:if test="${questionnaireDetailleInstance?.delai}">
 				<li class="fieldcontain">
