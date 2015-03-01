@@ -10,6 +10,11 @@ class QuestionnaireDetailleController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	def envoyer(QuestionnaireDetaille questionnaireDetailleInstance){
+		for (eleve in questionnaireDetaille.questionnaire.cours.eleve){
+			eleve.addTo(questionnaireDetailleInstance);
+		}
+	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond QuestionnaireDetaille.list(params), model:[questionnaireDetailleInstanceCount: QuestionnaireDetaille.count()]
