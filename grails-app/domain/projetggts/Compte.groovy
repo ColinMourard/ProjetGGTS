@@ -25,18 +25,8 @@ class Compte {
 		nom blank: false;
 		mail email: true;
 		// Parametres reserve a l'eleve
-		annee maxSize:1,validator: {val, obj ->
-			if (obj.type == TypeCompte.Eleve) {
-				return it.matches("[0-9]");
-			}
-			return val == 0;
-		}
-		groupe maxSize:1,validator: {val, obj ->
-			if (obj.type == TypeCompte.Eleve) {
-				return it.matches("[0-9]");
-			}
-			return val == 0;
-		}
+		annee maxSize:1, matches: "[0-9]+";
+		groupe maxSize:1, matches: "[0-9]+";
 		// Parametres reserve au professeur
 		questionnaires nullable: true, validator: {val, obj ->
 			if (obj.type == TypeCompte.Administrateur) {
