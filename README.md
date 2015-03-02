@@ -27,3 +27,5 @@ Et si jamais vous avez des fichiers qui s'affichent avec des symboles bizarres d
 Edit : Au niveau des issues, bien sûr, tout le monde n'est pas concerné par tous les sujets ! Chacun son job, et les hippopotames seront bien gardés ;-)
 
 Signé : Le Chartrousin
+
+Fin du projet ce vendredi...
