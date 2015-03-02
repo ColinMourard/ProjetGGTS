@@ -1,4 +1,5 @@
 
+<%@page import="utilitaires.TypeCompte"%>
 <%@ page import="projetggts.QuestionnaireCours" %>
 <!DOCTYPE html>
 <html>
@@ -94,7 +95,6 @@
 				<g:link controller="compte" action="envoyer" id="${questionnaireCoursInstance?.id}">Soumettre le questionnaire</g:link>		
 				</fieldset>
 			</g:form>
-			
 		</div>
 	</body>
 </html>

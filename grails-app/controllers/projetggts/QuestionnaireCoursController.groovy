@@ -3,6 +3,7 @@ package projetggts
 
 
 import static org.springframework.http.HttpStatus.*
+import utilitaires.TypeCompte;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -16,6 +17,9 @@ class QuestionnaireCoursController {
     }
 
     def show(QuestionnaireCours questionnaireCoursInstance) {
+		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Eleve){
+			redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
+		}
         respond questionnaireCoursInstance
     }
 
