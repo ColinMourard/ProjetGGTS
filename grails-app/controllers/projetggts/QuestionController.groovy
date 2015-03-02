@@ -40,20 +40,17 @@ class QuestionController {
 
 		println params
         if(params?.firstQuestion == "false"){
-			println "test1"
 			def previousQuestion = projetggts.Question.get(params.id2);
 			previousQuestion.next = questionInstance;
 			previousQuestion.save flush:true
 		}
 		else if(params?.firstQuestion == "true"){
-			println "test2"
 			questionInstance.save flush:true
 			def quest = projetggts.QuestionnaireDetaille.get(params.questId);
 			quest.firstQuestion = questionInstance;
 			quest.save flush:true;
 		}
 		else {
-			println "test3"
 			questionInstance.save flush:true
 		}
 
@@ -100,13 +97,28 @@ class QuestionController {
             notFound()
             return
         }
-
+		
+		if(questionInstance.precedent != null){
+			questionInstance.precedent.next = questionInstance?.next;
+			questionInstance?.next?.precedent = null;
+			questionInstance?.next = null;
+			def temp = questionInstance.precedent;
+			questionInstance.precedent = null;
+			questionInstance.save flush:true;
+			temp.save flush:true;
+		}else if(params.questId){
+			projetggts.QuestionnaireDetaille.get(params.questId).firstQuestion = questionInstance?.next;
+			questionInstance?.next?.precedent = null;
+			questionInstance?.next = null;
+			projetggts.QuestionnaireDetaille.get(params.questId).save flush:true;
+			questionInstance.save flush:true;
+		}
         questionInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action:"showQuestions", controller:"questionnaireDetaille", id:params.questId;
             }
             '*'{ render status: NO_CONTENT }
         }

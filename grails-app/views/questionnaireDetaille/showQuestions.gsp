@@ -26,8 +26,11 @@
 					<span class="property-value" aria-labelledby="firstQuestion-label">${questionBoucle.type}</span>
 					<span class="property-value" aria-labelledby="firstQuestion-label">${questionBoucle.question}</span>
 					<fieldset class="buttons">
-						<g:link class="edit" action="edit" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						<g:link class="create" action="create" controller="question" id="${questionBoucle.id}" params="[questId: params.id, firstQuestion:'false']"><g:message code="default.button.create.label" default="Create" /></g:link>
+						<g:form action="delete" controller="question" id="${questionBoucle.id}" params="[questId:params.id]" method="DELETE">
+							<g:link class="edit" action="edit" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+							<g:link class="create" action="create" controller="question" id="${questionBoucle.id}" params="[questId: params.id, firstQuestion:'false']"><g:message code="default.button.create.label" default="Create" /></g:link>
+							<g:actionSubmit class="delete" action="delete" controller="question" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+						</g:form>
 					</fieldset>
 					</li>
 					<%i++%>
