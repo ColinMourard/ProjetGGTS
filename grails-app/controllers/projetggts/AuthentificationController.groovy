@@ -15,7 +15,12 @@ class AuthentificationController {
 		session.compte = compte
 		flash.message = "Bonjour ${compte.nom}!"
 		if(compte.type.equals(TypeCompte.Eleve)){
-			redirect(controller:"reponse",action:"index")	
+			if(compte.nouveauQuestionnaire == 1){
+				redirect(controller:"compte",action:"eleve",params:[identifiant:compte.identifiant])
+			}
+			else{
+				redirect(controller:"compte",action:"show",id:compte.id);
+			}
 		}
 		else if(compte.type.equals(TypeCompte.Professeur)){
 			redirect(controller:"questionnaireCours",action:"index")

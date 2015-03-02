@@ -46,7 +46,7 @@ class BootStrap {
 					println firstQuestionEnglish.getErrors();
 				}
 				
-				def professeur1 = new Compte(identifiant: "prof", mdp: "password", nom: "Professeur", prenom: "Professeur", mail: "prof@isae.fr", type: TypeCompte.Professeur, annee: 0, groupe: 0);
+				def professeur1 = new Compte(identifiant: "prof", mdp: "password", nom: "Professeur", prenom: "Professeur", mail: "prof@isae.fr", type: TypeCompte.Professeur, annee: 0, groupe: 0,nouveauQuestionnaire: 0);
 				professeur1.matieres = new HashSet<Matiere>();
 				professeur1.matieres.add(Matiere.Mathematiques);
 				professeur1.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Statistiques"));
@@ -55,7 +55,7 @@ class BootStrap {
 				if(professeur1.hasErrors()){
 					println professeur1.getErrors();
 				}
-				def professeur2 = new Compte(identifiant: "prof2", mdp: "password", nom: "Professeur", prenom: "Professeur", mail: "prof@isae.fr", type: TypeCompte.Professeur, annee: 0, groupe: 0);
+				def professeur2 = new Compte(identifiant: "prof2", mdp: "password", nom: "Professeur", prenom: "Professeur", mail: "prof@isae.fr", type: TypeCompte.Professeur, annee: 0, groupe: 0,nouveauQuestionnaire: 0);
 				professeur2.matieres = new HashSet<Matiere>();
 				professeur2.matieres.add(Matiere.Mathematiques);
 				professeur2.addToCours(new Cours(matiere: Matiere.Mathematiques, type: TypeCours.General, intitule: "Distributions"));
@@ -63,31 +63,31 @@ class BootStrap {
 				if(professeur2.hasErrors()){
 					println professeur2.getErrors();
 				}
-				def eleve1 = new Compte(identifiant: "eleve1", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 5);
+				def eleve1 = new Compte(identifiant: "eleve1", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 5,nouveauQuestionnaire: 0);
 				projetggts.Cours.findByIntitule("Statistiques").addToEleves(eleve1.identifiant);
 				eleve1.save();
 				if(eleve1.hasErrors()){
 					println eleve1.getErrors();
 				}
-				def eleve2 = new Compte(identifiant: "eleve2", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 4);
+				def eleve2 = new Compte(identifiant: "eleve2", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 4,nouveauQuestionnaire: 0);
 				projetggts.Cours.findByIntitule("Statistiques").addToEleves(eleve2.identifiant);
 				eleve2.save();
 				if(eleve2.hasErrors()){
 					println eleve2.getErrors();
 				}
-				def eleve3 = new Compte(identifiant: "eleve3", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 1, groupe: 2);
+				def eleve3 = new Compte(identifiant: "eleve3", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 1, groupe: 2,nouveauQuestionnaire: 0);
 				projetggts.Cours.findByIntitule("Distributions").addToEleves(eleve3.identifiant);
 				eleve3.save();
 				if(eleve3.hasErrors()){
 					println eleve3.getErrors();
 				}
-				def eleve4 = new Compte(identifiant: "eleve4", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 6);
+				def eleve4 = new Compte(identifiant: "eleve4", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 6,nouveauQuestionnaire: 0);
 				projetggts.Cours.findByIntitule("Probabilites").addToEleves(eleve4.identifiant);
 				eleve4.save();
 				if(eleve4.hasErrors()){
 					println eleve4.getErrors();
 				}
-				def administrateur = new Compte(identifiant: "admin", mdp: "password", nom: "Istrateur", prenom: "Admin", mail: "admin.istrateur@isae.fr", type : TypeCompte.Administrateur, annee: 0, groupe: 0);
+				def administrateur = new Compte(identifiant: "admin", mdp: "password", nom: "Istrateur", prenom: "Admin", mail: "admin.istrateur@isae.fr", type : TypeCompte.Administrateur, annee: 0, groupe: 0,nouveauQuestionnaire: 0);
 				administrateur.save();
 				if(administrateur.hasErrors()){
 					println administrateur.getErrors();

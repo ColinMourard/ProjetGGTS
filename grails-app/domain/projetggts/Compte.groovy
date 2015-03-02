@@ -14,6 +14,7 @@ class Compte {
 	
 	int annee;
 	int groupe;
+	int nouveauQuestionnaire;//0 si pas de nouveau Questionnaire à remplir et 1 sinon
 	
 	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours, questionnairesElevesId: Integer];
 
@@ -27,6 +28,7 @@ class Compte {
 		// Parametres reserve a l'eleve
 		annee maxSize:1, matches: "[0-9]+";
 		groupe maxSize:1, matches: "[0-9]+";
+		nouveauQuestionnaire maxSize:1,matches: "[0-9]+";
 		// Parametres reserve au professeur
 		questionnaires nullable: true, validator: {val, obj ->
 			if (obj.type == TypeCompte.Administrateur) {
