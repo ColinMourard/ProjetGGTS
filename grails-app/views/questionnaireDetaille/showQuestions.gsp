@@ -16,6 +16,9 @@
 			<ol class="property-list questionnaireDetailleQuestion">
 			
 				<g:set var="questionBoucle" value="${QuestionnaireDetaille.get(params.id)?.firstQuestion}"/>
+				<fieldset class="buttons">
+					<g:link class="create" action="create" controller="question" id="${questionBoucle?.id}" params="[questId: params.id, firstQuestion:'true']"><g:message code="default.button.create.label" default="Create" /></g:link>
+				</fieldset>
 				<g:set value="1" var="i"/>
 				<g:while test="${questionBoucle != null}">
 					<li class="fieldcontain">
@@ -24,7 +27,7 @@
 					<span class="property-value" aria-labelledby="firstQuestion-label">${questionBoucle.question}</span>
 					<fieldset class="buttons">
 						<g:link class="edit" action="edit" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						<g:link class="create" action="create" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.create.label" default="Edit" /></g:link>
+						<g:link class="create" action="create" controller="question" id="${questionBoucle.id}" params="[questId: params.id, firstQuestion:'false']"><g:message code="default.button.create.label" default="Create" /></g:link>
 					</fieldset>
 					</li>
 					<%i++%>

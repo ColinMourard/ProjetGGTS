@@ -25,7 +25,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form action="save" id="${questionInstance.id}" params="[id2:params.id, questId:params.questId]" method="POST">
+			<g:form action="save" id="${questionInstance.id}" params="[id2:params.id, questId:params.questId, firstQuestion:params.firstQuestion]" method="POST">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

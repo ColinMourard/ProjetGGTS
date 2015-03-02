@@ -38,12 +38,22 @@ class QuestionController {
             return
         }
 
-        if(params.questId){
+		println params
+        if(params?.firstQuestion == "false"){
+			println "test1"
 			def previousQuestion = projetggts.Question.get(params.id2);
 			previousQuestion.next = questionInstance;
 			previousQuestion.save flush:true
 		}
+		else if(params?.firstQuestion == "true"){
+			println "test2"
+			questionInstance.save flush:true
+			def quest = projetggts.QuestionnaireDetaille.get(params.questId);
+			quest.firstQuestion = questionInstance;
+			quest.save flush:true;
+		}
 		else {
+			println "test3"
 			questionInstance.save flush:true
 		}
 

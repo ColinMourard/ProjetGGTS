@@ -20,6 +20,7 @@
 
 </div>
 
+<g:if test="${params.firstQuestion == "false"}">
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'precedent', 'error')} ">
 	<label for="precedent">
 		<g:message code="question.precedent.label" default="Precedent" />
@@ -28,13 +29,20 @@
 	${Question.get(params.id)?.question}
 
 </div>
+</g:if>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'next', 'error')} required">
 	<label for="next">
 		<g:message code="question.next.label" default="Next" />
 	</label>
-	${Question.get(params.id)?.next?.question}
-	<g:field type="hidden" id="next" name="next.id" value="${Question.get(params.id)?.next?.id}"/>
+	<g:if test="${params.firstQuestion == "false"}">
+		${Question.get(params.id)?.next?.question}
+		<g:field type="hidden" id="next" name="next.id" value="${Question.get(params.id)?.next?.id}"/>
+	</g:if>
+	<g:else>
+		${Question.get(params.id)?.question}
+		<g:field type="hidden" id="next" name="next.id" value="${Question.get(params.id)?.id}"/>
+	</g:else>
 
 </div>
 
