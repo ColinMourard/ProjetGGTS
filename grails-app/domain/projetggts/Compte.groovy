@@ -15,7 +15,7 @@ class Compte {
 	int annee;
 	int groupe;
 	
-	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours, questionnairesElevesId: Integer];
+	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours, questionnairesElevesId: String];
 
 	
     static constraints = {
@@ -36,13 +36,13 @@ class Compte {
 		}
 		cours nullable: true, validator: {val, obj ->
 			if (obj.type == TypeCompte.Eleve || obj.type == TypeCompte.Administrateur) {
-				return val == null;
+				return val == null || val.isEmpty();
 			}
 			return true;
 		}
 		matieres validator: {val, obj ->
 			if (obj.type == TypeCompte.Eleve || obj.type == TypeCompte.Administrateur) {
-				return val == null;
+				return val == null || val.isEmpty();
 			}
 			return val != null;
 		}

@@ -15,7 +15,7 @@ class CompteController {
 	def envoyer(){
 		for (eleveId in projetggts.QuestionnaireCours.get(params.id).cours.eleves){
 			def eleve = projetggts.Compte.findByIdentifiant(eleveId);
-			eleve.addToQuestionnairesElevesId(projetggts.CompteController.params.id);
+			eleve.addToQuestionnairesElevesId(params.id);
 			eleve.save();
 			if(eleve.hasErrors()){
 				println eleve.getErrors();
