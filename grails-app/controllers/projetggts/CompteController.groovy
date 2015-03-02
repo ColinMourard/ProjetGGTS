@@ -17,7 +17,7 @@ class CompteController {
 		for (eleveId in projetggts.QuestionnaireCours.get(params.id).cours.eleves){
 			eleve = projetggts.Compte.findByIdentifiant(eleveId);
 			eleve.addToQuestionnairesElevesId(new Integer(params.id));
-			println eleve.questionnairesElevesId;
+			eleve.nouveauQuestionnaire = 1;
 			eleve.save flush:true
 			if(eleve.hasErrors()){
 				println eleve.getErrors();
@@ -25,7 +25,11 @@ class CompteController {
 		}
 		redirect controller:"questionnaireCours", action:"show", id:params.id;
 	}
-
+	def eleve(){
+		def ele = projetggts.Compte.findByIdentifiant(params.identifiant);
+		flash.message = "Un nouveau questionnaire vous attend!";
+		redirect(controller:"compte",action:"show",id:ele.id);
+	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Compte.list(params), model:[compteInstanceCount: Compte.count()]
