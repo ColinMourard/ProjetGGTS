@@ -67,7 +67,7 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect questionInstance
+                redirect controller:"questionnaireDetaille", action:"showQuestions", id:params.questId;
             }
             '*'{ respond questionInstance, [status: OK] }
         }

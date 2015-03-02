@@ -27,10 +27,10 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:questionInstance, action:'update']" method="PUT" >
+			<g:form action="update" id="${questionInstance.id}" params="[questId:params.questId]" method="PUT" >
 				<g:hiddenField name="version" value="${questionInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="formE"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
