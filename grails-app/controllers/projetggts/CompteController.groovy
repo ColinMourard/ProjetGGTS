@@ -13,10 +13,12 @@ class CompteController {
 
 	
 	def envoyer(){
+		def eleve;
 		for (eleveId in projetggts.QuestionnaireCours.get(params.id).cours.eleves){
-			def eleve = projetggts.Compte.findByIdentifiant(eleveId);
-			eleve.addToQuestionnairesElevesId(params.id);
-			eleve.save();
+			eleve = projetggts.Compte.findByIdentifiant(eleveId);
+			eleve.addToQuestionnairesElevesId(new Integer(params.id));
+			println eleve.questionnairesElevesId;
+			eleve.save flush:true
 			if(eleve.hasErrors()){
 				println eleve.getErrors();
 			}

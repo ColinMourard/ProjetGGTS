@@ -1,4 +1,5 @@
 
+<%@page import="projetggts.QuestionnaireCours"%>
 <%@page import="utilitaires.TypeCompte"%>
 <%@ page import="projetggts.Compte" %>
 <!DOCTYPE html>
@@ -96,6 +97,17 @@
 					
 						<g:each in="${compteInstance.questionnaires}" var="q">
 						<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${compteInstance?.questionnairesElevesId}">
+				<li class="fieldcontain">
+					<span id="questionnairesElevesId-label" class="property-label"><g:message code="compte.questionnaires.label" default="Questionnaires a remplir" /></span>
+					
+						<g:each in="${compteInstance.questionnairesElevesId}" var="q">
+						<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q}">${QuestionnaireCours.get(q).cours?.intitule}</g:link></span>
 						</g:each>
 					
 				</li>
