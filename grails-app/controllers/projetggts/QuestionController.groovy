@@ -3,6 +3,9 @@ package projetggts
 
 
 import static org.springframework.http.HttpStatus.*
+
+import org.apache.tools.ant.Project;
+
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -35,12 +38,19 @@ class QuestionController {
             return
         }
 
-        questionInstance.save flush:true
+        if(params.questId){
+			def previousQuestion = projetggts.Question.get(params.id2);
+			previousQuestion.next = questionInstance;
+			previousQuestion.save flush:true
+		}
+		else {
+			questionInstance.save flush:true
+		}
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-                redirect questionInstance
+                redirect controller:"questionnaireDetaille", action:"showQuestions", id:params.questId;
             }
             '*' { respond questionInstance, [status: CREATED] }
         }

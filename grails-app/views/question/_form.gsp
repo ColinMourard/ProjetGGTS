@@ -20,16 +20,25 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'next', 'error')} required">
-	<label for="next">
-		<g:message code="question.next.label" default="Next" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'precedent', 'error')} ">
+	<label for="precedent">
+		<g:message code="question.precedent.label" default="Precedent" />
+		
 	</label>
-	<g:select id="next" name="next.id" from="${projetggts.Question.list()}" optionKey="id" required="" value="${questionInstance?.next?.id}" class="many-to-one"/>
+	${Question.get(params.id)?.question}
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'reponses', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'next', 'error')} required">
+	<label for="next">
+		<g:message code="question.next.label" default="Next" />
+	</label>
+	${Question.get(params.id)?.next?.question}
+	<g:field type="hidden" id="next" name="next.id" value="${Question.get(params.id)?.next?.id}"/>
+
+</div>
+
+<!--div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'reponses', 'error')} ">
 	<label for="reponses">
 		<g:message code="question.reponses.label" default="Reponses" />
 		
@@ -45,14 +54,5 @@
 </ul>
 
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'precedent', 'error')} ">
-	<label for="precedent">
-		<g:message code="question.precedent.label" default="Precedent" />
-		
-	</label>
-	<g:select id="precedent" name="precedent.id" from="${projetggts.Question.list()}" optionKey="id" value="${questionInstance?.precedent?.id}" class="many-to-one" noSelection="['null': '']"/>
-
-</div>
+</div>-->
 

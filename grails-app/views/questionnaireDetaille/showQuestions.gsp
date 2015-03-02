@@ -24,6 +24,7 @@
 					<span class="property-value" aria-labelledby="firstQuestion-label">${questionBoucle.question}</span>
 					<fieldset class="buttons">
 						<g:link class="edit" action="edit" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link class="create" action="create" controller="question" id="${questionBoucle.id}" params="[questId: params.id]"><g:message code="default.button.create.label" default="Edit" /></g:link>
 					</fieldset>
 					</li>
 					<%i++%>
