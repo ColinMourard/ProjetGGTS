@@ -11,6 +11,19 @@ class CompteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	
+	def envoyer(){
+		for (eleveId in projetggts.QuestionnaireCours.get(params.id).cours.eleves){
+			def eleve = projetggts.Compte.findByIdentifiant(eleveId);
+			eleve.addToQuestionnairesElevesId(projetggts.CompteController.params.id);
+			eleve.save();
+			if(eleve.hasErrors()){
+				println eleve.getErrors();
+			}
+		}
+		redirect controller:"questionnaireCours", action:"show", id:params.id;
+	}
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Compte.list(params), model:[compteInstanceCount: Compte.count()]

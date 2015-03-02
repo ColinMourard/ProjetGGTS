@@ -15,7 +15,7 @@ class Compte {
 	int annee;
 	int groupe;
 	
-	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours];
+	static hasMany = [cours: Cours, matieres: Matiere, questionnaires: QuestionnaireCours, questionnairesElevesId: Integer];
 
 	
     static constraints = {
