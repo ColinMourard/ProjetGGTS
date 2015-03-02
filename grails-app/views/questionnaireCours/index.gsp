@@ -49,6 +49,7 @@
 						<td>${fieldValue(bean: questionnaireCoursInstance, field: "detaille")}</td>
 					
 						<td>${fieldValue(bean: questionnaireCoursInstance, field: "professeur")}</td>
+						
 					
 					</tr>
 				</g:each>
