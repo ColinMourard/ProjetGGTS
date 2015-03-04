@@ -4,6 +4,7 @@ package projetggts
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import utilitaires.TypeCompte
 
 @Transactional(readOnly = true)
 class CompteController {
@@ -44,6 +45,23 @@ class CompteController {
     }
 
     def show(Compte compteInstance) {
+		if(compteInstance.type.equals(TypeCompte.Eleve)){
+			//A chaque fois que l'on appelle show sur le compte d'un élève
+			//On compare la date actuelle avec les délais(on laisse jusqu'à minuit) de chaque questionnaire
+			//Si le questionnaire est caduque alors on enlève à l'élève la possibilité d'y répondre
+			//Sinon on n'y touche pas!
+			Date date = new Date();
+			date.setHours(23);
+			date.setMinutes(59);
+			date.setSeconds(59);
+			def quest = projetggts.QuestionnaireCours.get(compteInstance.questionnairesElevesId);
+			for(element in quest){
+				if(element.delai.compareTo(date)==-1 || element.delai.compareTo(date) == 0){
+					compteInstance.removeFromQuestionnairesElevesId(new Integer((int)element.id));
+					compteInstance.save flush: true;
+				}
+			}
+		}
         respond compteInstance
     }
 
