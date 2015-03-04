@@ -23,6 +23,18 @@ class QuestionnaireCoursController {
 			prof.save flush:true;
 			redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
 		}
+		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Professeur){
+			if(questionnaireCoursInstance.nombreDeReponses == 1){
+				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponse pour ce questionnaire!";
+			}
+			else{
+				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponses pour ce questionnaire!";
+			}
+			//Affichage de la moyenne obtenue sur les réponses
+			if(questionnaireCoursInstance.nombreDeReponses>0){
+				flash.message = "Les eleves donnent à votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
+			}
+		}
         respond questionnaireCoursInstance
     }
 

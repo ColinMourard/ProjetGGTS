@@ -31,12 +31,14 @@ class CompteController {
 		def ele = projetggts.Compte.findByIdentifiant(params.identifiant);
 		flash.message = "Un nouveau questionnaire vous attend!";
 		ele.nouveauQuestionnaire = 0;
+		ele.save flush:true
 		redirect(controller:"compte",action:"show",id:ele.id);
 	}
 	def prof(){
 		def prof = projetggts.Compte.findByIdentifiant(params.identifiant);
 		flash.message = "Des eleves ont repondus a votre questionnaire!";
 		prof.nouvelleReponseSimple = 0;
+		prof.save flush:true
 		redirect(controller:"compte",action:"show",id:prof.id);
 	}
     def index(Integer max) {
@@ -59,6 +61,21 @@ class CompteController {
 				if(element.delai.compareTo(date)==-1 || element.delai.compareTo(date) == 0){
 					compteInstance.removeFromQuestionnairesElevesId(new Integer((int)element.id));
 					compteInstance.save flush: true;
+				}
+			}
+		}
+		if(compteInstance.type.equals(TypeCompte.Professeur)){
+			Date date = new Date();
+			date.setHours(23);
+			date.setMinutes(59);
+			date.setSeconds(59);
+			def questionnaires = compteInstance.questionnaires;
+			if(questionnaires != null){
+				def quest = projetggts.QuestionnaireCours.get(questionnaires.id);
+				for(element in quest){
+					if(element.delai.compareTo(date)==-1 || element.delai.compareTo(date) == 0){
+						redirect(controller:"questionnaireCours",action:"show",id:element.id);	
+					}
 				}
 			}
 		}
