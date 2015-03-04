@@ -23,7 +23,12 @@ class AuthentificationController {
 			}
 		}
 		else if(compte.type.equals(TypeCompte.Professeur)){
-			redirect(controller:"questionnaireCours",action:"index")
+			if(compte.nouvelleReponseSimple == 1){
+				redirect(controller:"compte",action:"prof",params:[identifiant:compte.identifiant])
+			}
+			else{
+				redirect(controller:"questionnaireCours",action:"index")
+			}
 		}
 		else{
 			redirect(url: "/compte/show/${session.compte.getId()}")

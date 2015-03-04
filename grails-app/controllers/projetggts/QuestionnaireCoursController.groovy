@@ -18,6 +18,9 @@ class QuestionnaireCoursController {
 
     def show(QuestionnaireCours questionnaireCoursInstance) {
 		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Eleve){
+			def prof = questionnaireCoursInstance.professeur;
+			prof.nouvelleReponseSimple = 1;
+			prof.save flush:true;
 			redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
 		}
         respond questionnaireCoursInstance

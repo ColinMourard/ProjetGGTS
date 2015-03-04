@@ -94,6 +94,9 @@
 				<fieldset class="buttons">
 				<g:link controller="compte" action="envoyer" id="${questionnaireCoursInstance?.id}">Soumettre le questionnaire</g:link>		
 				</fieldset>
+				<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+				</g:if>
 			</g:form>
 		</div>
 	</body>

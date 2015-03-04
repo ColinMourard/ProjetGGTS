@@ -23,12 +23,20 @@ class CompteController {
 				println eleve.getErrors();
 			}
 		}
-		redirect controller:"questionnaireCours", action:"show", id:params.id;
+		flash.message ="Le questionnaire a bien ete envoye!";
+		redirect controller:"questionnaireCours", action:"index";
 	}
 	def eleve(){
 		def ele = projetggts.Compte.findByIdentifiant(params.identifiant);
 		flash.message = "Un nouveau questionnaire vous attend!";
+		ele.nouveauQuestionnaire = 0;
 		redirect(controller:"compte",action:"show",id:ele.id);
+	}
+	def prof(){
+		def prof = projetggts.Compte.findByIdentifiant(params.identifiant);
+		flash.message = "Des eleves ont repondus a votre questionnaire!";
+		prof.nouvelleReponseSimple = 0;
+		redirect(controller:"compte",action:"show",id:prof.id);
 	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
