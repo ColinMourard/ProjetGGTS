@@ -24,11 +24,13 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="questionnaireCours.simple.label" default="Simple" /></th>
+						<th><g:message code="questionnaireCours.cours.label" default="Cours" /></th>
+					
+						<g:sortableColumn property="question" title="${message(code: 'questionnaireCours.question.label', default: 'Question')}" />
+					
+						<g:sortableColumn property="delai" title="${message(code: 'questionnaireCours.delai.label', default: 'Delai')}" />
 					
 						<th><g:message code="questionnaireCours.detaille.label" default="Detaille" /></th>
-					
-						<th><g:message code="questionnaireCours.cours.label" default="Cours" /></th>
 					
 						<th><g:message code="questionnaireCours.professeur.label" default="Professeur" /></th>
 					
@@ -38,13 +40,16 @@
 				<g:each in="${questionnaireCoursInstanceList}" status="i" var="questionnaireCoursInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${questionnaireCoursInstance.id}">${fieldValue(bean: questionnaireCoursInstance, field: "simple")}</g:link></td>
+						<td><g:link action="show" id="${questionnaireCoursInstance.id}">${fieldValue(bean: questionnaireCoursInstance, field: "cours")}</g:link></td>
+					
+						<td>${fieldValue(bean: questionnaireCoursInstance, field: "question")}</td>
+					
+						<td><g:formatDate date="${questionnaireCoursInstance.delai}" /></td>
 					
 						<td>${fieldValue(bean: questionnaireCoursInstance, field: "detaille")}</td>
 					
-						<td>${fieldValue(bean: questionnaireCoursInstance, field: "cours")}</td>
-					
 						<td>${fieldValue(bean: questionnaireCoursInstance, field: "professeur")}</td>
+						
 					
 					</tr>
 				</g:each>

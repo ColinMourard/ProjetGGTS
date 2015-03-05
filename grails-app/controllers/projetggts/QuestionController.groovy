@@ -3,13 +3,16 @@ package projetggts
 
 
 import static org.springframework.http.HttpStatus.*
+
+import org.apache.tools.ant.Project;
+
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class QuestionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Question.list(params), model:[questionInstanceCount: Question.count()]
@@ -35,12 +38,25 @@ class QuestionController {
             return
         }
 
-        questionInstance.save flush:true
+        if(params?.firstQuestion == "false"){
+			def previousQuestion = projetggts.Question.get(params.id2);
+			previousQuestion.next = questionInstance;
+			previousQuestion.save flush:true
+		}
+		else if(params?.firstQuestion == "true"){
+			questionInstance.save flush:true
+			def quest = projetggts.QuestionnaireDetaille.get(params.questId);
+			quest.firstQuestion = questionInstance;
+			quest.save flush:true;
+		}
+		else {
+			questionInstance.save flush:true
+		}
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-                redirect questionInstance
+                redirect controller:"questionnaireDetaille", action:"show", id:params.questId;
             }
             '*' { respond questionInstance, [status: CREATED] }
         }
@@ -67,7 +83,7 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect questionInstance
+                redirect controller:"questionnaireDetaille", action:"show", id:params.questId;
             }
             '*'{ respond questionInstance, [status: OK] }
         }
@@ -80,13 +96,28 @@ class QuestionController {
             notFound()
             return
         }
-
+		
+		if(questionInstance.precedent != null){
+			questionInstance.precedent.next = questionInstance?.next;
+			questionInstance?.next?.precedent = null;
+			questionInstance?.next = null;
+			def temp = questionInstance.precedent;
+			questionInstance.precedent = null;
+			questionInstance.save flush:true;
+			temp.save flush:true;
+		}else if(params.questId){
+			projetggts.QuestionnaireDetaille.get(params.questId).firstQuestion = questionInstance?.next;
+			questionInstance?.next?.precedent = null;
+			questionInstance?.next = null;
+			projetggts.QuestionnaireDetaille.get(params.questId).save flush:true;
+			questionInstance.save flush:true;
+		}
         questionInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action:"show", controller:"questionnaireDetaille", id:params.questId;
             }
             '*'{ render status: NO_CONTENT }
         }

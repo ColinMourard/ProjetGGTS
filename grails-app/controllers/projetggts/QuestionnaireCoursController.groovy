@@ -3,19 +3,42 @@ package projetggts
 
 
 import static org.springframework.http.HttpStatus.*
+import utilitaires.TypeCompte;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class QuestionnaireCoursController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond QuestionnaireCours.list(params), model:[questionnaireCoursInstanceCount: QuestionnaireCours.count()]
     }
 
     def show(QuestionnaireCours questionnaireCoursInstance) {
+		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Eleve){
+			def prof = questionnaireCoursInstance.professeur;
+			prof.nouvelleReponseSimple = 1;
+			prof.save flush:true;
+			if(questionnaireCoursInstance.delai.before(new Date())){
+				redirect controller:"reponse", action:"create", id:questionnaireCoursInstance?.detaille.id;
+			}else{
+				redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
+			}
+		}
+		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Professeur){
+			if(questionnaireCoursInstance.nombreDeReponses == 1){
+				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponse pour ce questionnaire!";
+			}
+			else{
+				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponses pour ce questionnaire!";
+			}
+			//Affichage de la moyenne obtenue sur les réponses
+			if(questionnaireCoursInstance.nombreDeReponses>0){
+				flash.message = "Les eleves donnent à votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
+			}
+		}
         respond questionnaireCoursInstance
     }
 

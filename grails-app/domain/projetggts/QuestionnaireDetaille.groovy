@@ -2,9 +2,10 @@ package projetggts
 
 class QuestionnaireDetaille {
 	Question firstQuestion;
-	String delai;
+	Date delai;
 	static belongsTo = [questionnaire: QuestionnaireCours];
 
     static constraints = {
+		firstQuestion nullable: true;
     }
 }

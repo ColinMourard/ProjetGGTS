@@ -23,34 +23,27 @@
 			</g:if>
 			<ol class="property-list questionnaireDetaille">
 			
-				<g:if test="${questionnaireDetailleInstance?.firstQuestion}">
-				<li class="fieldcontain">
-					<span id="firstQuestion-label" class="property-label"><g:message code="questionnaireDetaille.firstQuestion.label" default="First Question" /></span>
-					
-						<span class="property-value" aria-labelledby="firstQuestion-label"><g:link controller="question" action="show" id="${questionnaireDetailleInstance?.firstQuestion?.id}">${questionnaireDetailleInstance?.firstQuestion?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${questionnaireDetailleInstance?.delai}">
 				<li class="fieldcontain">
 					<span id="delai-label" class="property-label"><g:message code="questionnaireDetaille.delai.label" default="Delai" /></span>
 					
-						<span class="property-value" aria-labelledby="delai-label"><g:fieldValue bean="${questionnaireDetailleInstance}" field="delai"/></span>
+						<span class="property-value" aria-labelledby="delai-label"><g:formatDate date="${questionnaireDetailleInstance?.delai}" type="date"/></span>
 					
 				</li>
 				</g:if>
 			
 				<g:if test="${questionnaireDetailleInstance?.questionnaire}">
 				<li class="fieldcontain">
-					<span id="questionnaire-label" class="property-label"><g:message code="questionnaireDetaille.questionnaire.label" default="Questionnaire" /></span>
+					<span id="questionnaire-label" class="property-label"><g:message code="questionnaireDetaille.questionnaire.label" default="Questionnaire simple" /></span>
 					
-						<span class="property-value" aria-labelledby="questionnaire-label"><g:link controller="questionnaireCours" action="show" id="${questionnaireDetailleInstance?.questionnaire?.id}">${questionnaireDetailleInstance?.questionnaire?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="questionnaire-label"><g:link controller="questionnaireCours" action="show" id="${questionnaireDetailleInstance?.questionnaire?.id}">Voir le questionnaire simple</g:link></span>
 					
 				</li>
 				</g:if>
 			
 			</ol>
+			<g:render template="showQuestions"/>
+			
 			<g:form url="[resource:questionnaireDetailleInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${questionnaireDetailleInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

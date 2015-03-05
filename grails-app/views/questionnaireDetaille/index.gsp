@@ -38,7 +38,7 @@
 					
 						<td><g:link action="show" id="${questionnaireDetailleInstance.id}">${fieldValue(bean: questionnaireDetailleInstance, field: "firstQuestion")}</g:link></td>
 					
-						<td>${fieldValue(bean: questionnaireDetailleInstance, field: "delai")}</td>
+						<td><g:formatDate date="${questionnaireDetailleInstance.delai}" /></td>
 					
 						<td>${fieldValue(bean: questionnaireDetailleInstance, field: "questionnaire")}</td>
 					

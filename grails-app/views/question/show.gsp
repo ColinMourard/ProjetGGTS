@@ -45,7 +45,16 @@
 				<li class="fieldcontain">
 					<span id="next-label" class="property-label"><g:message code="question.next.label" default="Next" /></span>
 					
-						<span class="property-value" aria-labelledby="next-label"><g:link controller="question" action="show" id="${questionInstance?.next?.id}">${questionInstance?.next?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="next-label"><g:link controller="question" action="show" id="${questionInstance?.next?.id}">${questionInstance?.next?.question}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionInstance?.precedent}">
+				<li class="fieldcontain">
+					<span id="precedent-label" class="property-label"><g:message code="question.precedent.label" default="Precedent" /></span>
+					
+						<span class="property-value" aria-labelledby="precedent-label"><g:link controller="question" action="show" id="${questionInstance?.precedent?.id}">${questionInstance?.precedent?.question}</g:link></span>
 					
 				</li>
 				</g:if>
