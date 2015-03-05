@@ -64,6 +64,19 @@ class CompteController {
 				}
 			}
 		}
+
+		if(compteInstance.type.equals(TypeCompte.Professeur)){
+			Date date = new Date();
+			def questionnaires = compteInstance.questionnaires;
+			if(questionnaires != null){
+				def quest = projetggts.QuestionnaireCours.get(questionnaires.id);
+				for(element in quest){
+					if(element.delai.before(date)){
+						redirect(controller:"questionnaireCours",action:"show",id:element.id);	
+					}
+				}
+			}
+		}
         respond compteInstance
     }
 
