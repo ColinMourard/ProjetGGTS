@@ -83,6 +83,7 @@ class BootStrap {
 				}
 				def eleve4 = new Compte(identifiant: "eleve4", mdp: "password", nom: "Eleve", prenom: "Eleve", mail: "eleve@isae.fr", type: TypeCompte.Eleve, annee: 2, groupe: 6,nouveauQuestionnaire: 0);
 				projetggts.Cours.findByIntitule("Probabilites").addToEleves(eleve4.identifiant);
+				projetggts.Cours.findByIntitule("Statistiques").addToEleves(eleve4.identifiant);
 				eleve4.save();
 				if(eleve4.hasErrors()){
 					println eleve4.getErrors();

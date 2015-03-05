@@ -38,11 +38,16 @@ class ReponseSimpleController {
         reponseSimpleInstance.save flush:true
 		def eleve = projetggts.Compte.get(session?.compte?.id);
 		eleve.removeFromQuestionnairesElevesId(new Integer((int)reponseSimpleInstance.questionnaireCours.id));
+		def questionnaire = projetggts.QuestionnaireCours.get(reponseSimpleInstance.questionnaireCours.id);
+		questionnaire.addToReponses(reponseSimpleInstance);
+		questionnaire.nombreDeReponses ++;
+		questionnaire.moyenne =(questionnaire.moyenne + reponseSimpleInstance.reponse)/questionnaire.nombreDeReponses;
+		questionnaire.save flush: true
 		eleve.save flush:true
 		if(eleve.hasErrors()){
 			println eleve.getErrors();
 		}
-
+		
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'reponseSimple.label', default: 'ReponseSimple'), reponseSimpleInstance.id])
