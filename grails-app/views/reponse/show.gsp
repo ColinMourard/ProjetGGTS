@@ -23,15 +23,6 @@
 			</g:if>
 			<ol class="property-list reponse">
 			
-				<g:if test="${reponseInstance?.type}">
-				<li class="fieldcontain">
-					<span id="type-label" class="property-label"><g:message code="reponse.type.label" default="Type" /></span>
-					
-						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${reponseInstance}" field="type"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${reponseInstance?.reponse}">
 				<li class="fieldcontain">
 					<span id="reponse-label" class="property-label"><g:message code="reponse.reponse.label" default="Reponse" /></span>

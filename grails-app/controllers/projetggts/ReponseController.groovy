@@ -20,30 +20,23 @@ class ReponseController {
     }
 
     def create() {
-        respond new Reponse(params)
+        respond params
     }
 
     @Transactional
-    def save(Reponse reponseInstance) {
-        if (reponseInstance == null) {
-            notFound()
-            return
-        }
-
-        if (reponseInstance.hasErrors()) {
-            respond reponseInstance.errors, view:'create'
-            return
-        }
-		
-        reponseInstance.save flush:true
-		
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'reponse.label', default: 'Reponse'), reponseInstance.id])
-                redirect reponseInstance
-            }
-            '*' { respond reponseInstance, [status: CREATED] }
-        }
+    def save() {
+		def i = 1;
+		def questionBoucle = projetggts.Question.get(params.("id" + i));
+		while(questionBoucle != null){
+			questionBoucle.addToReponses(new Reponse(reponse:"${params.("reponse" + i)}"));
+			questionBoucle.save flush:true;
+			i++;
+			questionBoucle = projetggts.Question.get(params.("id" + i));
+		}
+		def eleve = projetggts.Compte.get(session?.compte?.id);
+		eleve.removeFromQuestionnairesElevesId(new Integer((int)projetggts.QuestionnaireDetaille.get(params.id).questionnaire.id));
+		eleve.save flush:true
+		redirect controller:"compte", action:"show", id:session?.compte?.id;
     }
 
     def edit(Reponse reponseInstance) {

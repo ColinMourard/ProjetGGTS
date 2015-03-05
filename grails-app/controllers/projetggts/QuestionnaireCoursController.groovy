@@ -21,7 +21,11 @@ class QuestionnaireCoursController {
 			def prof = questionnaireCoursInstance.professeur;
 			prof.nouvelleReponseSimple = 1;
 			prof.save flush:true;
-			redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
+			if(questionnaireCoursInstance.delai.before(new Date())){
+				redirect controller:"reponse", action:"create", id:questionnaireCoursInstance?.detaille.id;
+			}else{
+				redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
+			}
 		}
         respond questionnaireCoursInstance
     }
