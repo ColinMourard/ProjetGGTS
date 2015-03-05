@@ -19,10 +19,6 @@ class QuestionnaireDetailleController {
         respond questionnaireDetailleInstance
     }
 
-    def showQuestions(QuestionnaireDetaille questionnaireDetailleInstance) {
-        respond questionnaireDetailleInstance
-    }
-
     def create() {
         respond new QuestionnaireDetaille(params)
     }

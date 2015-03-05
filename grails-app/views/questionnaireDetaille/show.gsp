@@ -23,13 +23,6 @@
 			</g:if>
 			<ol class="property-list questionnaireDetaille">
 			
-				<li class="fieldcontain">
-					<span id="firstQuestion-label" class="property-label"><g:message code="questionnaireDetaille.firstQuestion.label" default="Questions" /></span>
-					
-						<span class="property-value" aria-labelledby="firstQuestion-label"><g:link controller="questionnaireDetaille" action="showQuestions" id="${questionnaireDetailleInstance?.id}">Voir la liste des questions</g:link></span>
-					
-				</li>
-			
 				<g:if test="${questionnaireDetailleInstance?.delai}">
 				<li class="fieldcontain">
 					<span id="delai-label" class="property-label"><g:message code="questionnaireDetaille.delai.label" default="Delai" /></span>
@@ -49,6 +42,8 @@
 				</g:if>
 			
 			</ol>
+			<g:render template="showQuestions"/>
+			
 			<g:form url="[resource:questionnaireDetailleInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${questionnaireDetailleInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
