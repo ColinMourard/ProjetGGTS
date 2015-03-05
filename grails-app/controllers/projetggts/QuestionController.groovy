@@ -38,7 +38,6 @@ class QuestionController {
             return
         }
 
-		println params
         if(params?.firstQuestion == "false"){
 			def previousQuestion = projetggts.Question.get(params.id2);
 			previousQuestion.next = questionInstance;
@@ -57,7 +56,7 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-                redirect controller:"questionnaireDetaille", action:"showQuestions", id:params.questId;
+                redirect controller:"questionnaireDetaille", action:"show", id:params.questId;
             }
             '*' { respond questionInstance, [status: CREATED] }
         }
@@ -84,7 +83,7 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect controller:"questionnaireDetaille", action:"showQuestions", id:params.questId;
+                redirect controller:"questionnaireDetaille", action:"show", id:params.questId;
             }
             '*'{ respond questionInstance, [status: OK] }
         }
@@ -118,7 +117,7 @@ class QuestionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Question.label', default: 'Question'), questionInstance.id])
-                redirect action:"showQuestions", controller:"questionnaireDetaille", id:params.questId;
+                redirect action:"show", controller:"questionnaireDetaille", id:params.questId;
             }
             '*'{ render status: NO_CONTENT }
         }
