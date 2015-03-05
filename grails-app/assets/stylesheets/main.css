@@ -234,9 +234,13 @@ fieldset,
 	float: left;
 }
 
-.fieldcontain .property-value {
+.fieldcontain .property-value,.urgent{
 	display: block;
 	margin-left: 27%;
+}
+
+.fieldcontain .urgent a{
+	color: #ff0000;
 }
 
 label {

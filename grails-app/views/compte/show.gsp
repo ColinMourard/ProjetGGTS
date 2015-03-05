@@ -96,8 +96,8 @@
 					<span id="questionnaires-label" class="property-label"><g:message code="compte.questionnaires.label" default="Questionnaires" /></span>
 					
 						<g:each in="${compteInstance.questionnaires}" var="q">
-						<g:if test="${compteInstance.questionnaires.delai.before(new Date())}">
-							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+						<g:if test="${q.delai.before(new Date()) && q.detaille == null}">
+							<span class="urgent" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule} - En attente de questionnaire detaille</g:link></span>
 						</g:if>
 						<g:else>
 							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
