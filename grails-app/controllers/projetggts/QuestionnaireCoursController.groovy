@@ -21,7 +21,7 @@ class QuestionnaireCoursController {
 			def prof = questionnaireCoursInstance.professeur;
 			prof.nouvelleReponseSimple = 1;
 			prof.save flush:true;
-			if(questionnaireCoursInstance.delai.before(new Date())){
+			if(questionnaireCoursInstance.delai.before(new Date()) && questionnaireCoursInstance.detaille != null){
 				redirect controller:"reponse", action:"create", id:questionnaireCoursInstance?.detaille.id;
 			}else{
 				redirect controller:"reponseSimple", action:"create", id:questionnaireCoursInstance.id;
@@ -34,9 +34,9 @@ class QuestionnaireCoursController {
 			else{
 				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponses pour ce questionnaire!";
 			}
-			//Affichage de la moyenne obtenue sur les réponses
+			//Affichage de la moyenne obtenue sur les reponses
 			if(questionnaireCoursInstance.nombreDeReponses>0){
-				flash.message = "Les eleves donnent à votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
+				flash.message = "Les eleves donnent a votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
 			}
 		}
         respond questionnaireCoursInstance
