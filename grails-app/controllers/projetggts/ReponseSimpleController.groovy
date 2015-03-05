@@ -41,7 +41,7 @@ class ReponseSimpleController {
 		def questionnaire = projetggts.QuestionnaireCours.get(reponseSimpleInstance.questionnaireCours.id);
 		questionnaire.addToReponses(reponseSimpleInstance);
 		questionnaire.nombreDeReponses ++;
-		questionnaire.moyenne =(questionnaire.moyenne + reponseSimpleInstance.reponse)/questionnaire.nombreDeReponses;
+		questionnaire.moyenne =(questionnaire.moyenne*(questionnaire.nombreDeReponses-1) + reponseSimpleInstance.reponse)/questionnaire.nombreDeReponses;
 		questionnaire.save flush: true
 		eleve.save flush:true
 		if(eleve.hasErrors()){

@@ -53,11 +53,13 @@ class CompteController {
 			if(questionnaires != null){
 				def quest = projetggts.QuestionnaireCours.get(questionnaires.id);
 				for(element in quest){
+<<<<<<< HEAD
 					if(element.delai.before(date)){
+=======
+>>>>>>> branch 'Questionnaire' of https://github.com/ColinMourard/ProjetGGTS.git
 						redirect(controller:"questionnaireCours",action:"show",id:element.id);	
 					}
 				}
-			}
 		}
         respond compteInstance
     }
