@@ -58,6 +58,8 @@ class QuestionnaireCoursController {
             return
         }
 
+		questionnaireCoursInstance.delai.setHours(questionnaireCoursInstance.delai.getHours() + 23);
+		questionnaireCoursInstance.delai.setMinutes(questionnaireCoursInstance.delai.getMinutes() + 59);
         questionnaireCoursInstance.save flush:true
 
         request.withFormat {
