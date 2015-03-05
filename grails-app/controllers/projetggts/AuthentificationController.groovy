@@ -25,6 +25,7 @@ class AuthentificationController {
 			}
 		}
 		else if(compte.type.equals(TypeCompte.Professeur)){
+			
 			if(compte.nouvelleReponseSimple == 1){
 				redirect(controller:"compte",action:"prof",params:[identifiant:compte.identifiant])
 			}

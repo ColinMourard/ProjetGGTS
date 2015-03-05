@@ -73,11 +73,9 @@ class CompteController {
 			if(questionnaires != null){
 				def quest = projetggts.QuestionnaireCours.get(questionnaires.id);
 				for(element in quest){
-					if(element.delai.compareTo(date)==-1 || element.delai.compareTo(date) == 0){
 						redirect(controller:"questionnaireCours",action:"show",id:element.id);	
 					}
 				}
-			}
 		}
         respond compteInstance
     }

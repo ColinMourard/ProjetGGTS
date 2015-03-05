@@ -96,7 +96,12 @@
 					<span id="questionnaires-label" class="property-label"><g:message code="compte.questionnaires.label" default="Questionnaires" /></span>
 					
 						<g:each in="${compteInstance.questionnaires}" var="q">
-						<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+						<g:if test="${compteInstance.questionnaires.delai.before(new Date())}">
+							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+						</g:if>
+						<g:else>
+							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+						</g:else>
 						</g:each>
 					
 				</li>

@@ -28,15 +28,19 @@ class QuestionnaireCoursController {
 			}
 		}
 		if(projetggts.Compte.get(session?.compte?.id)?.type == TypeCompte.Professeur){
-			if(questionnaireCoursInstance.nombreDeReponses == 1){
-				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponse pour ce questionnaire!";
+			if(questionnaireCoursInstance.nombreDeReponses == 0){
+				
 			}
-			else{
-				flash.message ="${questionnaireCoursInstance.nombreDeReponses} reponses pour ce questionnaire!";
+			if(questionnaireCoursInstance.nombreDeReponses == 1){
+				flash.message="${questionnaireCoursInstance.nombreDeReponses} reponse pour ce questionnaire";
+			}
+			if(questionnaireCoursInstance.nombreDeReponses > 1){
+				flash.message="${questionnaireCoursInstance.nombreDeReponses} reponses pour ce questionnaire";
 			}
 			//Affichage de la moyenne obtenue sur les réponses
+			
 			if(questionnaireCoursInstance.nombreDeReponses>0){
-				flash.message = "Les eleves donnent à votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
+				flash.message = "Les eleves donnent a votre cours une moyenne de ${questionnaireCoursInstance.moyenne}/5";
 			}
 		}
         respond questionnaireCoursInstance
