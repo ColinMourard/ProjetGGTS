@@ -1,5 +1,17 @@
 package utilitaires;
 
 public enum TypeCours {
-	General, Amphi, BE, PC, TD, TP
+	General("General"), Amphi("Amphi"), BE("BE"), PC("PC"), TD("TD"), TP("TP");
+	
+	private String name;
+	
+	private TypeCours(String name)
+	{
+		this.name = name;
+	}
+	
+	public String toString()
+	{
+		return name;
+	}
 }
