@@ -97,10 +97,10 @@
 					
 						<g:each in="${compteInstance.questionnaires}" var="q">
 						<g:if test="${q.delai.before(new Date()) && q.detaille == null}">
-							<span class="urgent" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule} - En attente de questionnaire detaille</g:link></span>
+							<span class="urgent" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.type} ${q?.cours?.intitule} - En attente de questionnaire detaille</g:link></span>
 						</g:if>
 						<g:else>
-							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.intitule}</g:link></span>
+							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q.id}">${q?.cours?.type} ${q?.cours?.intitule}</g:link></span>
 						</g:else>
 						</g:each>
 					
@@ -113,7 +113,7 @@
 					
 						<g:each in="${compteInstance.questionnairesElevesId}" var="q">
 						<g:if test="${QuestionnaireCours.get(q).detaille != null || QuestionnaireCours.get(q).delai.after(new Date())}">
-							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q}">${QuestionnaireCours.get(q).cours?.intitule}</g:link></span>
+							<span class="property-value" aria-labelledby="questionnaires-label"><g:link controller="questionnaireCours" action="show" id="${q}">${QuestionnaireCours.get(q).cours?.type} ${QuestionnaireCours.get(q).cours?.intitule}</g:link></span>
 						</g:if>
 						</g:each>
 					

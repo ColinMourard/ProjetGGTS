@@ -15,7 +15,7 @@ class AuthentificationController {
 	  def compte = Compte.findByIdentifiantAndMdp(params.ident, params.motdepasse)
 	  if(compte){
 		session.compte = compte
-		flash.message = "Bonjour ${compte.nom}!"
+		flash.message = "Bonjour ${compte.prenom}!"
 		if(compte.type.equals(TypeCompte.Eleve)){
 			if(compte.nouveauQuestionnaire == 1){
 				redirect(controller:"compte",action:"eleve",params:[identifiant:compte.identifiant])
@@ -30,7 +30,7 @@ class AuthentificationController {
 				redirect(controller:"compte",action:"prof",params:[identifiant:compte.identifiant])
 			}
 			else{
-				redirect(controller:"questionnaireCours",action:"index")
+				redirect(controller:"compte",action:"show", id:session.compte.id)
 			}
 		}
 		else{
