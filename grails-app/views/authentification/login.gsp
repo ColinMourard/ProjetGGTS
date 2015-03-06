@@ -14,7 +14,7 @@
             <tbody>            
               <tr class="prop">
                 <td class="name">
-                  <label for="ident">Identifiant:</label>
+                  <label for="ident"><font color=black>Identifiant:</font></label>
                 </td>
                 <td>
                   <input type="text" id="ident" name="ident"/>
@@ -23,7 +23,7 @@
           
               <tr class="prop">
                 <td class="name">
-                  <label for="motdepasse">Mot de Passe:</label>
+                  <label for="motdepasse"><font color = black>Mot de Passe:</font></label>
                 </td>
                 <td>
                   <input type="password" id="motdepasse" name="motdepasse"/>
@@ -34,7 +34,7 @@
         </div>
         <div class="buttons">
           <span class="button">
-            <input class="save" type="submit" value="Se Connecter" />
+            <input class="save" type="submit" value="Connexion" />
           </span>
         </div>
       </g:form>

@@ -9,7 +9,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* BASE LAYOUT */
-
 html {
 	background-color: #ddd;
 	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
@@ -37,8 +36,8 @@ html * {
 }
 
 body {
-	background: #ffffff;
-	color: #333333;
+	background: #b9bbd0;
+	color: #b9bbd0;
 	margin: 0 auto;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
@@ -48,7 +47,7 @@ body {
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #b9bbd0;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -65,7 +64,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #000000;
 }
 
 a:hover, a:active {
@@ -73,7 +72,7 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #000000;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
@@ -108,7 +107,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #b9bbd0;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -135,12 +134,9 @@ img {
 /* NAVIGATION MENU */
 
 .nav {
-	background-color: #efefef;
+	background-color: #98b1fe;
 	padding: 0.5em 0.75em;
-	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-	        box-shadow: 0 0 3px 1px #aaaaaa;
-	zoom: 1;
+	   
 }
 
 .nav ul {
@@ -185,6 +181,7 @@ img {
 }
 
 .nav a.home, .nav a.list, .nav a.create {
+	color: #000;
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
@@ -206,6 +203,7 @@ img {
 
 fieldset,
 .property-list {
+	background-color: #e0e0e1;
 	margin: 0.6em 1.25em 0 1.25em;
 	padding: 0.3em 1.8em 1.25em;
 	position: relative;
@@ -225,7 +223,7 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	color: #000;
 	text-align: right;
 	width: 25%;
 }
@@ -235,6 +233,7 @@ fieldset,
 }
 
 .fieldcontain .property-value,.urgent{
+	color : #000;
 	display: block;
 	margin-left: 27%;
 }
@@ -287,7 +286,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .required-indicator {
-	color: #48802C;
+	color: #000000;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -313,7 +312,7 @@ ul.one-to-many li.add {
 /* EMBEDDED PROPERTIES */
 
 fieldset.embedded {
-	background-color: transparent;
+	background-color: #ffffff;
 	border: 1px solid #CCCCCC;
 	margin-left: 0;
 	margin-right: 0;
@@ -339,9 +338,9 @@ fieldset.embedded legend {
 }
 
 .message {
-	background: #f3f3ff;
-	border: 1px solid #b2d1ff;
-	color: #006dba;
+	background: #fff;
+	border: 3px solid #fff;
+	color: #2414f5;
 	   -moz-box-shadow: 0 0 0.25em #b2d1ff;
 	-webkit-box-shadow: 0 0 0.25em #b2d1ff;
 	        box-shadow: 0 0 0.25em #b2d1ff;
@@ -526,21 +525,21 @@ th:hover, tr:hover {
 /* ACTION BUTTONS */
 
 .buttons {
-	background-color: #efefef;
+	background-color: #b9bbd0;
 	overflow: hidden;
 	padding: 0.3em;
-	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
-	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
-	        box-shadow: 0 0 3px 1px #aaaaaa;
+	   -moz-box-shadow: 0 0 0px 0px #aaaaaa;
+	-webkit-box-shadow: 0 0 0px 0px #aaaaaa;
+	        box-shadow: 0 0 0px 0px #aaaaaa;
 	margin: 0.1em 0 0 0;
 	border: none;
 }
 
 .buttons input,
 .buttons a {
-	background-color: transparent;
+	background-color: #7f8188;
 	border: 0;
-	color: #666666;
+	color: #000000;
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 0.25em 0;
@@ -572,6 +571,7 @@ th:hover, tr:hover {
 }
 
 .buttons .delete, .buttons .edit, .buttons .save {
+	background-color: #7f8188;
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
