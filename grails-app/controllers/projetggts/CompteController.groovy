@@ -48,9 +48,9 @@ class CompteController {
 
     def show(Compte compteInstance) {
 		if(compteInstance.type.equals(TypeCompte.Eleve)){
-			//A chaque fois que l'on appelle show sur le compte d'un élève
-			//On compare la date actuelle avec les délais(on laisse jusqu'à minuit) de chaque questionnaire
-			//Si le questionnaire est caduque alors on enlève à l'élève la possibilité d'y répondre
+			//A chaque fois que l'on appelle show sur le compte d'un ï¿½lï¿½ve
+			//On compare la date actuelle avec les dï¿½lais(on laisse jusqu'ï¿½ minuit) de chaque questionnaire
+			//Si le questionnaire est caduque alors on enlï¿½ve ï¿½ l'ï¿½lï¿½ve la possibilitï¿½ d'y rï¿½pondre
 			//Sinon on n'y touche pas!
 			Date date = new Date();
 			date.setHours(23);
@@ -61,19 +61,6 @@ class CompteController {
 				if(element.delai.compareTo(date)==-1 || element.delai.compareTo(date) == 0){
 					compteInstance.removeFromQuestionnairesElevesId(new Integer((int)element.id));
 					compteInstance.save flush: true;
-				}
-			}
-		}
-
-		if(compteInstance.type.equals(TypeCompte.Professeur)){
-			Date date = new Date();
-			def questionnaires = compteInstance.questionnaires;
-			if(questionnaires != null){
-				def quest = projetggts.QuestionnaireCours.get(questionnaires.id);
-				for(element in quest){
-					if(element.delai.before(date)){
-						redirect(controller:"questionnaireCours",action:"show",id:element.id);	
-					}
 				}
 			}
 		}
